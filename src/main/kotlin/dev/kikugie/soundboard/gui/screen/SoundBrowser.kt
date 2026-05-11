@@ -35,7 +35,7 @@ import io.wispforest.owo.ui.core.Positioning.relative
 import io.wispforest.owo.ui.core.Sizing.expand
 import io.wispforest.owo.ui.core.Sizing.fill
 import io.wispforest.owo.ui.core.Surface
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 import java.nio.file.Path
 import kotlin.math.ceil
 

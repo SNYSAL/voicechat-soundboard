@@ -10,7 +10,7 @@ import dev.kikugie.soundboard.util.idOf
 import net.fabricmc.fabric.api.resource.SimpleResourceReloadListener
 import net.minecraft.resource.Resource
 import net.minecraft.resource.ResourceManager
-import net.minecraft.util.Identifier
+import net.minecraft.resources.ResourceLocation
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.CompletableFuture.allOf
 import java.util.concurrent.Executor
@@ -25,7 +25,7 @@ object ResourceAudioHolder : SimpleResourceReloadListener<GroupMap> {
 
     operator fun get(id: SoundId) = sounds[id.parent()][id]
 
-    override fun getFabricId(): Identifier = idOf("sounds")
+    override fun getFabricId(): ResourceLocation = idOf("sounds")
     override fun load(
         manager: ResourceManager,
         executor: Executor
@@ -51,7 +51,7 @@ object ResourceAudioHolder : SimpleResourceReloadListener<GroupMap> {
         synchronized(this) { sounds = data }
     }
 
-    private fun entry(manager: ResourceManager, id: Identifier, file: Resource): SoundEntry {
+    private fun entry(manager: ResourceManager, id: ResourceLocation, file: Resource): SoundEntry {
         // Null if default, don't assign the default
         val configuration =
             manager.getResource(id.withPath { "${it.removeSuffix(FORMAT)}properties" }).getOrNull()?.let {

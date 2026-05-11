@@ -4,7 +4,7 @@ import dev.kikugie.soundboard.MOD_ID
 import dev.kikugie.soundboard.audio.BASE_DIR
 import dev.kikugie.soundboard.audio.FORMAT
 import kotlinx.serialization.Serializable
-import net.minecraft.util.Identifier
+import net.minecraft.resources.ResourceLocation
 import kotlin.io.path.exists
 
 /**
@@ -23,7 +23,7 @@ value class SoundId(val str: String) {
     val file get() = str.substringAfterLast('/', "")
 
     constructor(namespace: String, path: String) : this("${ if (namespace.isEmpty() || namespace == MOD_ID) "" else "$namespace:" }$path")
-    constructor(id: Identifier) : this(id.toString())
+    constructor(id: ResourceLocation) : this(id.toString())
 
     fun parent() = SoundId(namespace, directory.ifEmpty { "/" })
     fun path(file: Boolean) = when {

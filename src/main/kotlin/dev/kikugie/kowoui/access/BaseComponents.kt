@@ -11,7 +11,7 @@ import io.wispforest.owo.ui.core.ParentUIComponent as ParentComponent
 //?}
 import io.wispforest.owo.ui.util.FocusHandler
 import net.minecraft.client.gui.tooltip.TooltipComponent
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 
 var Component.cursorStyle: CursorStyle
     get() = cursorStyle()
@@ -125,3 +125,4 @@ val Component.width: Int
 val Component.height: Int
     get() = height()
 //?}
+

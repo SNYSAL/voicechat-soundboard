@@ -1,4 +1,4 @@
-﻿package dev.kikugie.soundboard.util
+package dev.kikugie.soundboard.util
 
 //? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
@@ -13,7 +13,7 @@ import io.wispforest.owo.ui.inject.GreedyInputUIComponent as GreedyInputComponen
 //?}
 import io.wispforest.owo.ui.core.Color
 import net.minecraft.client.font.TextRenderer
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 import net.minecraft.util.Util
 import net.minecraft.util.math.MathHelper
 import kotlin.math.cos
@@ -61,3 +61,4 @@ fun OwoUIDrawContext.drawScrollingText(
         disableScissor()
     }
 }
+

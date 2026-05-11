@@ -1,6 +1,6 @@
 package dev.kikugie.soundboard.audio.download
 
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 
 sealed interface CobaltResponse
 

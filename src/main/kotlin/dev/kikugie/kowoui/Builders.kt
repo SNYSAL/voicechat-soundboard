@@ -12,7 +12,7 @@ import io.wispforest.owo.ui.core.BaseParentComponent
 import io.wispforest.owo.ui.component.Components
 import io.wispforest.owo.ui.container.Containers
 import io.wispforest.owo.ui.container.WrappingParentComponent
-import net.minecraft.network.chat.Component as ButtonWidgetText
+import net.minecraft.network.chat.Component as ButtonText
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
 import io.wispforest.owo.ui.base.BaseUIComponent as BaseComponent
@@ -20,13 +20,13 @@ import io.wispforest.owo.ui.base.BaseParentUIComponent as BaseParentComponent
 import io.wispforest.owo.ui.component.UIComponents as Components
 import io.wispforest.owo.ui.container.UIContainers as Containers
 import io.wispforest.owo.ui.container.WrappingParentUIComponent as WrappingParentComponent
-import net.minecraft.client.gui.components.ButtonWidget.Text as ButtonWidgetText
+import net.minecraft.client.gui.components.Button.Text as ButtonText
 //?}
 import io.wispforest.owo.ui.core.Sizing
 import net.minecraft.world.level.block.BlockState
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.client.texture.Sprite
-import net.minecraft.client.util.SpriteIdentifier
+import net.minecraft.client.util.SpriteResourceLocation
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.item.ItemStack
@@ -126,14 +126,14 @@ import net.minecraft.resources.ResourceLocation
 @JvmOverloads inline fun discreteSlider(range: ClosedFloatingPointRange<Double>, build: DiscreteSliderComponent.() -> Unit = {}): DiscreteSliderComponent =
     Components.discreteSlider(Sizing.content(), range.start, range.endInclusive).apply(build)
 
-@JvmOverloads inline fun sprite(id: SpriteIdentifier, build: SpriteComponent.() -> Unit = {}): SpriteComponent =
+@JvmOverloads inline fun sprite(id: SpriteResourceLocation, build: SpriteComponent.() -> Unit = {}): SpriteComponent =
     Components.sprite(id).apply(build)
 
 @JvmOverloads inline fun sprite(sprite: Sprite, build: SpriteComponent.() -> Unit = {}): SpriteComponent =
     Components.sprite(sprite).apply(build)
 
 @JvmOverloads inline fun texture(
-    texture: Identifier,
+    texture: ResourceLocation,
     u: Int,
     v: Int,
     regionWidth: Int,

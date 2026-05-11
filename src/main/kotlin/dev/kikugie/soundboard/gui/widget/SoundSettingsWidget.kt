@@ -29,7 +29,7 @@ import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.core.*
 import io.wispforest.owo.ui.core.Insets.bottom
 import io.wispforest.owo.ui.core.Sizing.*
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 import kotlin.time.Duration
 
 class SoundSettingsWidget(
@@ -208,3 +208,4 @@ class SoundSettingsWidget(
         }
     }
 }
+

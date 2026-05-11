@@ -2,12 +2,12 @@ package dev.kikugie.kowoui.dynamic
 
 //? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
-import net.minecraft.text.Text as ButtonWidgetText
+import net.minecraft.network.chat.Component as ButtonText
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
-import net.minecraft.client.gui.widget.ButtonWidget.Text as ButtonWidgetText
+import net.minecraft.client.gui.components.Button.Text as ButtonText
 //?}
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 
 inline infix fun <T : Component> T.wrap(build: WrapperContainer<T>.() -> Unit) =
     WrapperContainer(this).apply(build)

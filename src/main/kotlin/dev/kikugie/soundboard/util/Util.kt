@@ -4,7 +4,7 @@ import dev.kikugie.soundboard.MOD_ID
 import kotlinx.coroutines.*
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.screen.Screen
-import net.minecraft.util.Identifier
+import net.minecraft.resources.ResourceLocation
 import net.minecraft.util.Util
 import net.minecraft.util.math.Vec3d
 //? if !=1.21.8 {
@@ -16,8 +16,8 @@ import kotlin.reflect.*
 
 typealias Property<T> = KMutableProperty0<T>
 
-fun idOf(path: String): Identifier = Identifier.of(MOD_ID, path)
-fun idOf(namespace: String, path: String) = Identifier.of(namespace, path)
+fun idOf(path: String): ResourceLocation = ResourceLocation.of(MOD_ID, path)
+fun idOf(namespace: String, path: String) = ResourceLocation.of(namespace, path)
 
 @OptIn(DelicateCoroutinesApi::class)
 fun runOn(context: CoroutineContext, action: suspend CoroutineScope.() -> Unit) {

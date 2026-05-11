@@ -11,12 +11,12 @@ import io.wispforest.owo.ui.core.*
 import io.wispforest.owo.ui.core.UIComponent as Component
 import io.wispforest.owo.ui.core.*
 //?}
-import net.minecraft.client.gui.widget.TextFieldWidget
+import net.minecraft.client.gui.components.EditBox
 import org.joml.Matrix4f
 import net.minecraft.entity.Entity
 import net.minecraft.item.ItemStack
 import net.minecraft.text.Style
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 import java.util.function.Consumer
 import java.util.function.Function
 
@@ -293,21 +293,21 @@ var TextureComponent.visibleArea: PositionedRectangle
         visibleArea(value)
     }
 
-var TextFieldWidget.placeholder: Text?
+var EditBox.placeholder: Text?
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {
         setPlaceholder(value)
     }
 
-var TextFieldWidget.suggestion: String?
+var EditBox.suggestion: String?
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {
         setSuggestion(value)
     }
 
-var TextFieldWidget.maxLength: Int
+var EditBox.maxLength: Int
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {

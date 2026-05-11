@@ -7,7 +7,7 @@ import io.wispforest.owo.ui.core.OwoUIDrawContext
 //?} else {
 import io.wispforest.owo.ui.core.OwoUIGraphics as OwoUIDrawContext
 //?}
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 
 class DynamicButtonComponent(initial: Text) : ButtonComponent(initial, {}) {
     private var provider: (() -> Text)? = null
