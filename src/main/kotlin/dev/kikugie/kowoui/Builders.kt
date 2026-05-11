@@ -23,8 +23,8 @@ import io.wispforest.owo.ui.container.WrappingParentUIComponent as WrappingParen
 import net.minecraft.client.gui.widget.ButtonWidget.Text as ButtonWidgetText
 //?}
 import io.wispforest.owo.ui.core.Sizing
-import net.minecraft.block.BlockState
-import net.minecraft.block.entity.BlockEntity
+import net.minecraft.world.level.block.BlockState
+import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.client.texture.Sprite
 import net.minecraft.client.util.SpriteIdentifier
 import net.minecraft.entity.Entity
