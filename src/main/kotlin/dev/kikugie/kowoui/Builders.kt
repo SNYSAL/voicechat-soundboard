@@ -64,11 +64,19 @@ import net.minecraft.util.Identifier
 @JvmOverloads inline fun <T : Component> overlay(child: T, build: OverlayContainer<T>.() -> Unit = {}): OverlayContainer<T> =
     Containers.overlay(child).apply(build)
 
+//? if =1.21.8 {
 @JvmOverloads inline fun button(build: ButtonComponent.() -> Unit = {}): ButtonComponent =
-    Components.button(wrapButtonText("".text())) {}.apply(build)
+    Components.button("".text()) {}.apply(build)
 
 @JvmOverloads inline fun button(text: Text, build: ButtonComponent.() -> Unit = {}): ButtonComponent =
-    Components.button(wrapButtonText(text)) {}.apply(build)
+    Components.button(text) {}.apply(build)
+//?} else {
+@JvmOverloads inline fun button(build: ButtonComponent.() -> Unit = {}): ButtonComponent =
+    Components.button("".text()) {}.apply(build)
+
+@JvmOverloads inline fun button(text: Text, build: ButtonComponent.() -> Unit = {}): ButtonComponent =
+    Components.button(text) {}.apply(build)
+//?}
 
 @JvmOverloads inline fun textBox(build: TextBoxComponent.() -> Unit = {}): TextBoxComponent =
     Components.textBox(Sizing.content()).apply(build)

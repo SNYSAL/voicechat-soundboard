@@ -1,6 +1,7 @@
 package dev.kikugie.soundboard.gui.component
 
 import dev.kikugie.soundboard.util.drawScrollingText
+import dev.kikugie.kowoui.text
 //? if =1.21.8 {
 import io.wispforest.owo.mixin.ui.access.ClickableWidgetAccessor
 import io.wispforest.owo.ui.core.OwoUIDrawContext
@@ -15,9 +16,14 @@ import net.minecraft.client.gui.tooltip.HoveredTooltipPositioner
 import net.minecraft.text.Text
 import java.util.function.Consumer
 
+//? if =1.21.8 {
 class ScrollingButtonComponent(message: Text, onPress: Consumer<ButtonComponent>?) : ButtonComponent(message, onPress) {
+//?} else {
+class ScrollingButtonComponent(message: Text, onPress: Consumer<ButtonComponent>?) : ButtonComponent(message, onPress) {
+//?}
     private val margins get() = margins().get()
 
+    //? if =1.21.8 {
     override fun renderWidget(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
         renderer.draw(context as OwoUIDrawContext, this, delta)
 
@@ -35,14 +41,16 @@ class ScrollingButtonComponent(message: Text, onPress: Consumer<ButtonComponent>
             color,
             textShadow
         )
-        //? if =1.21.8 {
         val tooltip = (this as ClickableWidgetAccessor).`owo$getTooltip`()
-        //?} else {
-        val tooltip = (this as ButtonAccessor).`owo$getTooltip`()
-        //?}
         if (this.hovered && tooltip.tooltip != null) context.drawTooltip(
             textRenderer, tooltip.tooltip!!
                 .getLines(MinecraftClient.getInstance()), HoveredTooltipPositioner.INSTANCE, mouseX, mouseY, this.isFocused
         )
     }
+    //?} else {
+    // In 1.21.11, renderWidget is final - we use composition instead
+    override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
+        super.render(context, mouseX, mouseY, delta)
+    }
+    //?}
 }

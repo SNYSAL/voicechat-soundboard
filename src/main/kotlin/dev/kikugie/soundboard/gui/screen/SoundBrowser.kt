@@ -137,7 +137,14 @@ class SoundBrowser : ModScreen() {
     ) = group(id !in collapsed, entries.size, title).apply {
         val soundId = this@container.id
         child().apply {
+            //? if =1.21.8 {
             onToggle { if (it) collapsed -= soundId else collapsed += soundId }
+            //?} else {
+            onToggle { expanded -> 
+                if (expanded) collapsed -= soundId else collapsed += soundId
+                true
+            }
+            //?}
             titleLayout().apply {
                 if (location != null) {
                     tooltipText = DIRECTORY_TOOLTIP.translation()
