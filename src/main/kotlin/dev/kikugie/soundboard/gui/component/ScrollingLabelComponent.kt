@@ -3,7 +3,11 @@ package dev.kikugie.soundboard.gui.component
 import dev.kikugie.soundboard.util.client
 import dev.kikugie.soundboard.util.drawScrollingText
 import io.wispforest.owo.ui.component.LabelComponent
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.OwoUIDrawContext
+//?} else {
+import io.wispforest.owo.ui.core.OwoUIGraphics as OwoUIDrawContext
+//?}
 import net.minecraft.text.Text
 
 class ScrollingLabelComponent(text: Text = Text.empty()) : LabelComponent(text) {

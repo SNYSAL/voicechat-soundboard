@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.option.KeyBinding
+import net.minecraft.client.util.InputUtil
 
 object ModKeyBinds {
     private val keybinds = mutableMapOf<String, KeyBuilder>()
@@ -11,7 +12,11 @@ object ModKeyBinds {
     @JvmStatic
     operator fun get(name: String): KeyBinding? = keybinds[name]?.keybind
     fun keybind(key: Int, name: String, action: KeyBuilder.() -> Unit) {
+        //? if =1.21.8 {
         val bind = KeyBindingHelper.registerKeyBinding(KeyBinding("soundboard.keybinds.$name", key, "soundboard.title"))
+        //?} else {
+        val bind = KeyBindingHelper.registerKeyBinding(KeyBinding("soundboard.keybinds.$name", InputUtil.Type.KEYSYM, key, KeyBinding.Category.MISC))
+        //?}
         val builder = KeyBuilder(bind).apply(action)
         keybinds[name] = builder
         ClientTickEvents.END_CLIENT_TICK.register {

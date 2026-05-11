@@ -7,8 +7,20 @@ import io.wispforest.owo.ui.component.SlimSliderComponent.Axis
 import io.wispforest.owo.ui.container.*
 //? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
+import io.wispforest.owo.ui.core.BaseComponent
+import io.wispforest.owo.ui.core.BaseParentComponent
+import io.wispforest.owo.ui.component.Components
+import io.wispforest.owo.ui.container.Containers
+import io.wispforest.owo.ui.container.WrappingParentComponent
+import net.minecraft.text.Text as ButtonWidgetText
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
+import io.wispforest.owo.ui.base.BaseUIComponent as BaseComponent
+import io.wispforest.owo.ui.base.BaseParentUIComponent as BaseParentComponent
+import io.wispforest.owo.ui.component.UIComponents as Components
+import io.wispforest.owo.ui.container.UIContainers as Containers
+import io.wispforest.owo.ui.container.WrappingParentUIComponent as WrappingParentComponent
+import net.minecraft.client.gui.widget.ButtonWidget.Text as ButtonWidgetText
 //?}
 import io.wispforest.owo.ui.core.Sizing
 import net.minecraft.block.BlockState
@@ -53,10 +65,10 @@ import net.minecraft.util.Identifier
     Containers.overlay(child).apply(build)
 
 @JvmOverloads inline fun button(build: ButtonComponent.() -> Unit = {}): ButtonComponent =
-    Components.button("".text()) {}.apply(build)
+    Components.button(wrapButtonText("".text())) {}.apply(build)
 
 @JvmOverloads inline fun button(text: Text, build: ButtonComponent.() -> Unit = {}): ButtonComponent =
-    Components.button(text) {}.apply(build)
+    Components.button(wrapButtonText(text)) {}.apply(build)
 
 @JvmOverloads inline fun textBox(build: TextBoxComponent.() -> Unit = {}): TextBoxComponent =
     Components.textBox(Sizing.content()).apply(build)

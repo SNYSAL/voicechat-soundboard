@@ -51,17 +51,21 @@ object Soundboard {
             val numrow = GLFW.GLFW_KEY_1..GLFW.GLFW_KEY_9
             val numpad = GLFW.GLFW_KEY_KP_1..GLFW.GLFW_KEY_KP_9
             fun get(): SoundEntry? {
-                val handle = client.window.handle
+                //? if =1.21.8 {
+                val window = client.window.handle
+                //?} else {
+                val window = client.window
+                //?}
                 // 0 to 9
                 val index = when {
                     // 0 converts to 9 because it's the last on the number row
-                    InputUtil.isKeyPressed(handle, GLFW.GLFW_KEY_0) ||
-                    InputUtil.isKeyPressed(handle, GLFW.GLFW_KEY_KP_0) -> 9
+                    InputUtil.isKeyPressed(window, GLFW.GLFW_KEY_0) ||
+                    InputUtil.isKeyPressed(window, GLFW.GLFW_KEY_KP_0) -> 9
 
                     else -> numrow.firstNotNullOfOrNull {
-                        if (InputUtil.isKeyPressed(handle, it)) it - GLFW.GLFW_KEY_1 else null
+                        if (InputUtil.isKeyPressed(window, it)) it - GLFW.GLFW_KEY_1 else null
                     } ?: numpad.firstNotNullOfOrNull {
-                        if (InputUtil.isKeyPressed(handle, it)) it - GLFW.GLFW_KEY_KP_1 else null
+                        if (InputUtil.isKeyPressed(window, it)) it - GLFW.GLFW_KEY_KP_1 else null
                     } ?: return null
                 }
                 if (index >= favourites.size) return null

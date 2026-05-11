@@ -3,10 +3,24 @@ package dev.kikugie.soundboard.gui.component
 import dev.kikugie.soundboard.util.Property
 import dev.kikugie.soundboard.util.drawLinePrecise
 import dev.kikugie.soundboard.util.idOf
+//? if =1.21.8 {
 import io.wispforest.owo.ui.base.BaseComponent
 import io.wispforest.owo.ui.base.BaseParentComponent
 import io.wispforest.owo.ui.core.*
+//?} else {
+import io.wispforest.owo.ui.base.BaseUIComponent as BaseComponent
+import io.wispforest.owo.ui.base.BaseParentUIComponent as BaseParentComponent
+import io.wispforest.owo.ui.core.Color
+import io.wispforest.owo.ui.core.CursorStyle
+import io.wispforest.owo.ui.core.Insets
+import io.wispforest.owo.ui.core.OwoUIGraphics as OwoUIDrawContext
+import io.wispforest.owo.ui.core.ParentUIComponent as ParentComponent
+import io.wispforest.owo.ui.core.Size
+import io.wispforest.owo.ui.core.Sizing
+import io.wispforest.owo.ui.core.UIComponent as Component
+//?}
 import net.minecraft.client.gl.RenderPipelines
+import net.minecraft.client.gui.Click
 import kotlin.time.Duration
 
 // 0..1
@@ -92,6 +106,7 @@ class DurationCutterComponent(
 
         override fun determineHorizontalContentSize(sizing: Sizing?): Int = 3
 
+        //? if =1.21.8 {
         override fun onMouseDrag(mouseX: Double, mouseY: Double, deltaX: Double, deltaY: Double, button: Int): Boolean {
             super.onMouseDrag(mouseX, mouseY, deltaX, deltaY, button)
             if (invalidDrag || !isValid(mouseX - deltaX + x)) invalidDrag = true
@@ -104,6 +119,20 @@ class DurationCutterComponent(
 
         override fun onMouseUp(mouseX: Double, mouseY: Double, button: Int): Boolean =
             super.onMouseUp(mouseX, mouseY, button).also { invalidDrag = false; selected = null }
+        //?} else {
+        override fun onMouseDrag(click: Click, deltaX: Double, deltaY: Double): Boolean {
+            super.onMouseDrag(click, deltaX, deltaY)
+            if (invalidDrag || !isValid(click.x() - deltaX + x)) invalidDrag = true
+            else {
+                selected = this
+                move(deltaX)
+            }
+            return true
+        }
+
+        override fun onMouseUp(click: Click): Boolean =
+            super.onMouseUp(click).also { invalidDrag = false; selected = null }
+        //?}
 
         override fun draw(context: OwoUIDrawContext, mouseX: Int, mouseY: Int, partialTicks: Float, delta: Float) {
             val hovered = mouseY in y..y + height && mouseX in x..x + width && (selected == null || selected == this && !invalidDrag)

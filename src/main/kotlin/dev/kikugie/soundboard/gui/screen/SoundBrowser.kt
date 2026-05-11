@@ -26,7 +26,11 @@ import io.wispforest.owo.ui.container.GridLayout
 import io.wispforest.owo.ui.container.ScrollContainer.Scrollbar.vanilla
 import io.wispforest.owo.ui.container.StackLayout
 import io.wispforest.owo.ui.core.Insets.*
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.ParentComponent
+//?} else {
+import io.wispforest.owo.ui.core.ParentUIComponent as ParentComponent
+//?}
 import io.wispforest.owo.ui.core.Positioning.relative
 import io.wispforest.owo.ui.core.Sizing.expand
 import io.wispforest.owo.ui.core.Sizing.fill

@@ -2,10 +2,16 @@ package dev.kikugie.soundboard.gui.component
 
 import dev.kikugie.soundboard.util.drawLinePrecise
 import dev.kikugie.soundboard.util.volumeScale
+//? if =1.21.8 {
 import io.wispforest.owo.ui.base.BaseComponent
-import io.wispforest.owo.ui.core.Color
 import io.wispforest.owo.ui.core.OwoUIDrawContext
+//?} else {
+import io.wispforest.owo.ui.base.BaseUIComponent as BaseComponent
+import io.wispforest.owo.ui.core.OwoUIGraphics as OwoUIDrawContext
+//?}
+import io.wispforest.owo.ui.core.Color
 import io.wispforest.owo.ui.core.Sizing
+import io.wispforest.owo.ui.core.Insets
 import kotlin.math.absoluteValue
 import kotlin.properties.Delegates.observable
 
@@ -22,19 +28,17 @@ class WaveformComponent(
     private var lines: IntArray = intArrayOf()
 
     init {
+        //? if =1.21.8 {
         sizing(Sizing.fill())
-    }
-
-    override fun applySizing() {
-        super.applySizing()
-        if (lines.size != width || lastHeight != height)
-            update()
+        //?} else {
+        sizing(Sizing.fill(), Sizing.fill())
+        //?}
     }
 
     override fun draw(context: OwoUIDrawContext, mouseX: Int, mouseY: Int, partialTicks: Float, delta: Float) {
         if (lines.isEmpty()) return
         val local = margins.get()
-        var drawX = x + local.right + .5
+        var drawX = x + local.left + .5
         val drawY = y + local.top + .0
         for (i in 0..<lines.lastIndex) context.drawLinePrecise(
             drawX,

@@ -1,9 +1,14 @@
 package dev.kikugie.soundboard.gui.component
 
 import dev.kikugie.soundboard.util.drawScrollingText
+//? if =1.21.8 {
 import io.wispforest.owo.mixin.ui.access.ClickableWidgetAccessor
-import io.wispforest.owo.ui.component.ButtonComponent
 import io.wispforest.owo.ui.core.OwoUIDrawContext
+//?} else {
+import io.wispforest.owo.mixin.ui.access.ButtonAccessor
+import io.wispforest.owo.ui.core.OwoUIGraphics as OwoUIDrawContext
+//?}
+import io.wispforest.owo.ui.component.ButtonComponent
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.tooltip.HoveredTooltipPositioner
@@ -30,7 +35,11 @@ class ScrollingButtonComponent(message: Text, onPress: Consumer<ButtonComponent>
             color,
             textShadow
         )
+        //? if =1.21.8 {
         val tooltip = (this as ClickableWidgetAccessor).`owo$getTooltip`()
+        //?} else {
+        val tooltip = (this as ButtonAccessor).`owo$getTooltip`()
+        //?}
         if (this.hovered && tooltip.tooltip != null) context.drawTooltip(
             textRenderer, tooltip.tooltip!!
                 .getLines(MinecraftClient.getInstance()), HoveredTooltipPositioner.INSTANCE, mouseX, mouseY, this.isFocused

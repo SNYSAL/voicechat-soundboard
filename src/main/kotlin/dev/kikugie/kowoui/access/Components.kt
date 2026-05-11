@@ -5,7 +5,12 @@ package dev.kikugie.kowoui.access
 import dev.kikugie.kowoui.unsupported
 import io.wispforest.owo.ui.component.*
 import io.wispforest.owo.ui.component.ButtonComponent.Renderer
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.*
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+import io.wispforest.owo.ui.core.*
+//?}
 import net.minecraft.client.gui.widget.TextFieldWidget
 import org.joml.Matrix4f
 import net.minecraft.entity.Entity

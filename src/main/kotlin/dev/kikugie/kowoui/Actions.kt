@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+﻿@file:Suppress("unused")
 
 package dev.kikugie.kowoui
 
@@ -32,6 +32,7 @@ fun <T : TextAreaComponent> T.onChange(action: (String) -> Unit) =
 fun <T : TextBoxComponent> T.onChange(action: (String) -> Unit) =
     this.also { onChanged().subscribe(TextBoxComponent.OnChanged(action)) }
 
+//? if =1.21.8 {
 fun <T : Component> T.onCharType(action: (Char, Int) -> Boolean) =
     this.also { charTyped().subscribe(CharTyped(action)) }
 
@@ -61,12 +62,62 @@ fun <T : Component> T.onMouseScroll(action: (Double, Double, Double) -> Boolean)
 
 fun <T : Component> T.onMouseUp(action: (Double, Double, Int) -> Boolean) =
     this.also { mouseUp().subscribe(MouseUp(action)) }
+//?} else {
+private fun Any.callInt(vararg names: String): Int {
+    for (name in names) {
+        val method = javaClass.methods.firstOrNull { it.name == name && it.parameterCount == 0 } ?: continue
+        val value = method.invoke(this) ?: continue
+        if (value is Number) return value.toInt()
+    }
+    error("Unable to extract int from ${javaClass.name}")
+}
+
+private fun Any.callChar(vararg names: String): Char {
+    for (name in names) {
+        val method = javaClass.methods.firstOrNull { it.name == name && it.parameterCount == 0 } ?: continue
+        val value = method.invoke(this) ?: continue
+        when (value) {
+            is Char -> return value
+            is Number -> return value.toInt().toChar()
+            is String -> if (value.isNotEmpty()) return value[0]
+        }
+    }
+    error("Unable to extract char from ${javaClass.name}")
+}
+
+fun <T : Component> T.onCharType(action: (Char, Int) -> Boolean) =
+    this.also { charTyped().subscribe { input -> action(input.callChar("character", "char", "value"), input.callInt("modifiers", "mods", "modifiers") ) } }
+
+fun <T : Component> T.onFocusGain(action: (FocusSource) -> Unit) =
+    this.also { focusGained().subscribe { focusSource -> action(focusSource) } }
+
+fun <T : Component> T.onFocusLose(action: () -> Unit) =
+    this.also { focusLost().subscribe { action() } }
+
+fun <T : Component> T.onKeyPress(action: (Int, Int, Int) -> Boolean) =
+    this.also { keyPress().subscribe { input -> action(input.callInt("keyCode", "key", "code"), input.callInt("scanCode", "scan", "scanCode"), input.callInt("modifiers", "mods", "modifiers")) } }
+
+fun <T : Component> T.onMouseDown(action: (Double, Double, Int) -> Boolean) =
+    this.also { mouseDown().subscribe { click, doubled -> action(click.callInt("x", "mouseX").toDouble(), click.callInt("y", "mouseY").toDouble(), click.callInt("button", "buttonId")) } }
+
+fun <T : Component> T.onMouseDrag(action: (Double, Double, Double, Double, Int) -> Boolean) =
+    this.also { mouseDrag().subscribe { click, deltaX, deltaY -> action(click.callInt("x", "mouseX").toDouble(), click.callInt("y", "mouseY").toDouble(), click.callInt("x", "mouseX").toDouble() + deltaX, click.callInt("y", "mouseY").toDouble() + deltaY, click.callInt("button", "buttonId")) } }
+
+fun <T : Component> T.onMouseEnter(action: () -> Unit) =
+    this.also { mouseEnter().subscribe { action() } }
+
+fun <T : Component> T.onMouseLeave(action: () -> Unit) =
+    this.also { mouseLeave().subscribe { action() } }
+
+fun <T : Component> T.onMouseScroll(action: (Double, Double, Double) -> Boolean) =
+    this.also { mouseScroll().subscribe { mouseX, mouseY, amount -> action(mouseX, mouseY, amount) } }
+
+fun <T : Component> T.onMouseUp(action: (Double, Double, Int) -> Boolean) =
+    this.also { mouseUp().subscribe { click -> action(click.callInt("x", "mouseX").toDouble(), click.callInt("y", "mouseY").toDouble(), click.callInt("button", "buttonId")) } }
+//?}
 
 fun <T : SliderComponent> T.onSlideEnd(action: () -> Unit) =
     this.also { slideEnd().subscribe(SliderComponent.OnSlideEnd(action)) }
 
 fun <T : SlimSliderComponent> T.onSlideEnd(action: () -> Unit) =
     this.also { onSlideEnd().subscribe(SlimSliderComponent.OnSlideEnd(action)) }
-
-fun <T : CollapsibleContainer> T.onToggle(action: (Boolean) -> Unit) =
-    this.also { onToggled().subscribe(CollapsibleContainer.OnToggled(action)) }

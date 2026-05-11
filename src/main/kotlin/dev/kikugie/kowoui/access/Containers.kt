@@ -6,11 +6,6 @@ import io.wispforest.owo.ui.container.CollapsibleContainer
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.container.OverlayContainer
 import io.wispforest.owo.ui.container.ScrollContainer
-//? if =1.21.8 {
-// 1.21.8 imports are handled by wildcard import in kowoui.core
-//?} else {
-// 0.13 uses UIComponent naming
-//?}
 
 var OverlayContainer<*>.closeOnClick: Boolean
     get() = closeOnClick()

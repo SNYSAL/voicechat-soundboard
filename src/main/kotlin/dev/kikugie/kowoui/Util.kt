@@ -4,11 +4,17 @@ package dev.kikugie.kowoui
 
 //? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
+import io.wispforest.owo.ui.base.BaseComponent
+import io.wispforest.owo.ui.inject.GreedyInputComponent
+import net.minecraft.text.Text as ButtonText
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
+import io.wispforest.owo.ui.core.ParentUIComponent as ParentComponent
+import io.wispforest.owo.ui.base.BaseUIComponent as BaseComponent
+import io.wispforest.owo.ui.inject.GreedyInputUIComponent as GreedyInputComponent
+import net.minecraft.client.gui.widget.ButtonWidget.Text as ButtonText
 //?}
 import io.wispforest.owo.ui.core.Insets
-import io.wispforest.owo.ui.core.ParentComponent
 import io.wispforest.owo.ui.parsing.UIModel
 import net.minecraft.text.Text
 import kotlin.properties.ReadWriteProperty
