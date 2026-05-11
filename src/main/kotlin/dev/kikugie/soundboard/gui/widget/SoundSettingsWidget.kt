@@ -3,7 +3,7 @@ package dev.kikugie.soundboard.gui.widget
 import dev.kikugie.kowoui.*
 import dev.kikugie.kowoui.access.*
 import dev.kikugie.kowoui.dynamic.ColoredTextComponent
-import dev.kikugie.kowoui.dynamic.dynamicButton
+import dev.kikugie.kowoui.dynamic.dynamicButtonWidget
 import dev.kikugie.kowoui.dynamic.dynamicLabel
 import dev.kikugie.kowoui.dynamic.fixedSpacer
 import dev.kikugie.kowoui.experimental.at
@@ -23,13 +23,13 @@ import dev.kikugie.soundboard.util.client
 import dev.kikugie.soundboard.util.currentScreen
 import dev.kikugie.soundboard.util.duration
 import dev.kikugie.soundboard.util.read
-import io.wispforest.owo.ui.component.ButtonComponent.Renderer
+import io.wispforest.owo.ui.component.ButtonWidgetComponent.Renderer
 import io.wispforest.owo.ui.component.SlimSliderComponent.Axis.VERTICAL
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.core.*
 import io.wispforest.owo.ui.core.Insets.bottom
 import io.wispforest.owo.ui.core.Sizing.*
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 import kotlin.time.Duration
 
 class SoundSettingsWidget(
@@ -192,7 +192,7 @@ class SoundSettingsWidget(
                     onDurationChange { cutter.update() }
                 }
             }
-            at(1, 1) += dynamicButton {
+            at(1, 1) += dynamicButtonWidget {
                 id = "play"
                 horizontalSizing = fixed(20)
                 tooltipText = PLAY_TOOLTIP.translation(ModKeyBinds["browser"]!!.boundKeyLocalizedText.string)

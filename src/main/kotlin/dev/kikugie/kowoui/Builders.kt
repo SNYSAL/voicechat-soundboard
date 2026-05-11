@@ -12,7 +12,7 @@ import io.wispforest.owo.ui.core.BaseParentComponent
 import io.wispforest.owo.ui.component.Components
 import io.wispforest.owo.ui.container.Containers
 import io.wispforest.owo.ui.container.WrappingParentComponent
-import net.minecraft.network.chat.Component as ButtonText
+import net.minecraft.text.Text as ButtonWidgetText
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
 import io.wispforest.owo.ui.base.BaseUIComponent as BaseComponent
@@ -20,19 +20,19 @@ import io.wispforest.owo.ui.base.BaseParentUIComponent as BaseParentComponent
 import io.wispforest.owo.ui.component.UIComponents as Components
 import io.wispforest.owo.ui.container.UIContainers as Containers
 import io.wispforest.owo.ui.container.WrappingParentUIComponent as WrappingParentComponent
-import net.minecraft.client.gui.components.Button.Text as ButtonText
+import net.minecraft.client.gui.widget.ButtonWidget.Text as ButtonWidgetText
 //?}
 import io.wispforest.owo.ui.core.Sizing
-import net.minecraft.world.level.block.BlockState
-import net.minecraft.world.level.block.entity.BlockEntity
+import net.minecraft.block.BlockState
+import net.minecraft.block.entity.BlockEntity
 import net.minecraft.client.texture.Sprite
 import net.minecraft.client.util.SpriteResourceLocation
 import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.network.chat.Component
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.text.Text
+import net.minecraft.util.Identifier
 
 @JvmOverloads inline fun stack(build: StackLayout.() -> Unit = {}): StackLayout =
     Containers.stack(Sizing.content(), Sizing.content()).apply(build)
@@ -65,16 +65,16 @@ import net.minecraft.resources.ResourceLocation
     Containers.overlay(child).apply(build)
 
 //? if =1.21.8 {
-@JvmOverloads inline fun button(build: ButtonComponent.() -> Unit = {}): ButtonComponent =
+@JvmOverloads inline fun button(build: ButtonWidgetComponent.() -> Unit = {}): ButtonWidgetComponent =
     Components.button("".text()) {}.apply(build)
 
-@JvmOverloads inline fun button(text: Text, build: ButtonComponent.() -> Unit = {}): ButtonComponent =
+@JvmOverloads inline fun button(text: Text, build: ButtonWidgetComponent.() -> Unit = {}): ButtonWidgetComponent =
     Components.button(text) {}.apply(build)
 //?} else {
-@JvmOverloads inline fun button(build: ButtonComponent.() -> Unit = {}): ButtonComponent =
+@JvmOverloads inline fun button(build: ButtonWidgetComponent.() -> Unit = {}): ButtonWidgetComponent =
     Components.button("".text()) {}.apply(build)
 
-@JvmOverloads inline fun button(text: Text, build: ButtonComponent.() -> Unit = {}): ButtonComponent =
+@JvmOverloads inline fun button(text: Text, build: ButtonWidgetComponent.() -> Unit = {}): ButtonWidgetComponent =
     Components.button(text) {}.apply(build)
 //?}
 

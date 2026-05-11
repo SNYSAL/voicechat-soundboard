@@ -12,8 +12,8 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import net.minecraft.text.ClickEvent
 import net.minecraft.text.Style
-import net.minecraft.network.chat.Component
-import net.minecraft.network.chat.Components
+import net.minecraft.text.Text
+import net.minecraft.text.Texts
 import net.minecraft.util.Formatting
 import okhttp3.OkHttpClient
 import okhttp3.Request

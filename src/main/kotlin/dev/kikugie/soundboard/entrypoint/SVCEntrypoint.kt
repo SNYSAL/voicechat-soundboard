@@ -11,7 +11,7 @@ import dev.kikugie.soundboard.MOD_ID
 import dev.kikugie.soundboard.Soundboard
 import dev.kikugie.soundboard.audio.play.AudioScheduler
 import net.fabricmc.api.ClientModInitializer
-import net.minecraft.client.MinecraftClient
+import net.minecraft.class_310Client
 import javax.sound.sampled.AudioFormat
 import javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED
 

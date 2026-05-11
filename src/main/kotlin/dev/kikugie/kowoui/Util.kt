@@ -6,17 +6,17 @@ package dev.kikugie.kowoui
 import io.wispforest.owo.ui.core.Component
 import io.wispforest.owo.ui.base.BaseComponent
 import io.wispforest.owo.ui.inject.GreedyInputComponent
-import net.minecraft.network.chat.Component as ButtonText
+import net.minecraft.text.Text as ButtonWidgetText
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
 import io.wispforest.owo.ui.core.ParentUIComponent as ParentComponent
 import io.wispforest.owo.ui.base.BaseUIComponent as BaseComponent
 import io.wispforest.owo.ui.inject.GreedyInputUIComponent as GreedyInputComponent
-import net.minecraft.client.gui.components.Button.Text as ButtonText
+import net.minecraft.client.gui.widget.ButtonWidget.Text as ButtonWidgetText
 //?}
 import io.wispforest.owo.ui.core.Insets
 import io.wispforest.owo.ui.parsing.UIModel
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 

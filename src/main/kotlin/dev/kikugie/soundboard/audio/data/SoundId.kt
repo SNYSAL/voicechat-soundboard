@@ -4,7 +4,7 @@ import dev.kikugie.soundboard.MOD_ID
 import dev.kikugie.soundboard.audio.BASE_DIR
 import dev.kikugie.soundboard.audio.FORMAT
 import kotlinx.serialization.Serializable
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.util.Identifier
 import kotlin.io.path.exists
 
 /**

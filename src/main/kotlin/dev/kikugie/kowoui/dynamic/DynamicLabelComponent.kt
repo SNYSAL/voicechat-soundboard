@@ -7,7 +7,7 @@ import io.wispforest.owo.ui.core.OwoUIDrawContext
 //?} else {
 import io.wispforest.owo.ui.core.OwoUIGraphics as OwoUIDrawContext
 //?}
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 
 class DynamicLabelComponent(initial: Text) : LabelComponent(initial) {
     private var provider: (() -> Text)? = null

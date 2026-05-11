@@ -2,7 +2,7 @@ package dev.kikugie.kowoui.mixin;
 
 import dev.kikugie.kowoui.mixinstuff.TextFieldAccessor;
 import io.wispforest.owo.ui.core.Color;
-import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.widget.TextFieldWidget;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import java.util.function.Predicate;
 
-@Mixin(EditBox.class)
-public class EditBoxMixin implements TextFieldAccessor {
+@Mixin(TextFieldWidget.class)
+public class TextFieldWidgetMixin implements TextFieldAccessor {
 	@Unique
 	private String cachedText;
 

@@ -14,7 +14,7 @@ import dev.kikugie.soundboard.audio.data.SoundId
 import dev.kikugie.soundboard.audio.registry.SoundRegistry
 import dev.kikugie.soundboard.entrypoint.SoundboardAccess
 import dev.kikugie.soundboard.gui.CONFIG_PANEL
-import dev.kikugie.soundboard.gui.component.ScrollingButtonComponent
+import dev.kikugie.soundboard.gui.component.ScrollingButtonWidgetComponent
 import dev.kikugie.soundboard.gui.widget.SoundSettingsWidget
 import dev.kikugie.soundboard.mixin.owo_ui.ScrollContainerAccessor
 import dev.kikugie.soundboard.util.ctrlDown
@@ -35,7 +35,7 @@ import io.wispforest.owo.ui.core.Positioning.relative
 import io.wispforest.owo.ui.core.Sizing.expand
 import io.wispforest.owo.ui.core.Sizing.fill
 import io.wispforest.owo.ui.core.Surface
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 import java.nio.file.Path
 import kotlin.math.ceil
 
@@ -117,7 +117,7 @@ class SoundBrowser : ModScreen() {
         if (entries.isEmpty() && !keepEmpty) return@with null
         val location = category.id.path(false)
         val buttons = entries.values.map {
-            ScrollingButtonComponent(it.title) {}.apply {
+            ScrollingButtonWidgetComponent(it.title) {}.apply {
                 margins = of(3)
                 horizontalSizing = fill(33)
                 tooltipText = FILE_TOOLTIP.translation()
@@ -133,7 +133,7 @@ class SoundBrowser : ModScreen() {
 
     private fun SoundGroup.container(
         location: Path?,
-        buttons: List<ScrollingButtonComponent>
+        buttons: List<ScrollingButtonWidgetComponent>
     ) = group(id !in collapsed, entries.size, title).apply {
         val soundId = this@container.id
         child().apply {

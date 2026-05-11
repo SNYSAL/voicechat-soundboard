@@ -16,7 +16,7 @@ import io.wispforest.owo.ui.core.UIComponent as Component
 //?}
 import io.wispforest.owo.ui.core.Sizing.fill
 import io.wispforest.owo.ui.core.Sizing.fixed
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 
 class ConfigScreen : ModScreen() {
     companion object : ScreenManager(ConfigScreen::class) {

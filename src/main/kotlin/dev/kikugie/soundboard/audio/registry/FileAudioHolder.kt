@@ -9,7 +9,7 @@ import dev.kikugie.soundboard.audio.data.SoundGroup
 import dev.kikugie.soundboard.audio.data.SoundId
 import it.unimi.dsi.fastutil.objects.Object2LongMap
 import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 import java.nio.file.Path
 import kotlin.io.path.*
 import kotlin.io.path.PathWalkOption.BREADTH_FIRST

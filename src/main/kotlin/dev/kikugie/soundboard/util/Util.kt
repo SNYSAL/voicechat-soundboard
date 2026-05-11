@@ -2,9 +2,9 @@ package dev.kikugie.soundboard.util
 
 import dev.kikugie.soundboard.MOD_ID
 import kotlinx.coroutines.*
-import net.minecraft.client.MinecraftClient
+import net.minecraft.class_310Client
 import net.minecraft.client.gui.screen.Screen
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.util.Identifier
 import net.minecraft.util.Util
 import net.minecraft.util.math.Vec3d
 //? if !=1.21.8 {

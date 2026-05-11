@@ -10,7 +10,7 @@ import dev.kikugie.soundboard.util.idOf
 import net.fabricmc.fabric.api.resource.SimpleResourceReloadListener
 import net.minecraft.resource.Resource
 import net.minecraft.resource.ResourceManager
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.util.Identifier
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.CompletableFuture.allOf
 import java.util.concurrent.Executor

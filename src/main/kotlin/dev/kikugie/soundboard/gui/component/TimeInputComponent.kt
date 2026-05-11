@@ -4,7 +4,7 @@ import dev.kikugie.kowoui.dynamic.ColoredTextComponent
 import dev.kikugie.kowoui.onChange
 import dev.kikugie.soundboard.util.Property
 import io.wispforest.owo.ui.core.Sizing
-import net.minecraft.client.MinecraftClient
+import net.minecraft.class_310Client
 import net.minecraft.client.gui.DrawContext
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds

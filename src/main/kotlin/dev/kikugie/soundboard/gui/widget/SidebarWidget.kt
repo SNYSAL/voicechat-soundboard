@@ -11,7 +11,7 @@ import dev.kikugie.soundboard.gui.screen.DownloadScreen
 import dev.kikugie.soundboard.gui.screen.SoundBrowser
 import dev.kikugie.soundboard.util.currentScreen
 import dev.kikugie.soundboard.util.idOf
-import io.wispforest.owo.ui.component.ButtonComponent.Renderer.texture
+import io.wispforest.owo.ui.component.ButtonWidgetComponent.Renderer.texture
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.core.Sizing.content
 import io.wispforest.owo.ui.core.Sizing.fixed

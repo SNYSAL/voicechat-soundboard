@@ -11,7 +11,7 @@ import dev.kikugie.soundboard.audio.FORMAT
 import dev.kikugie.soundboard.audio.download.Downloader
 import dev.kikugie.soundboard.util.resolveOrNull
 import dev.kikugie.soundboard.util.then
-import io.wispforest.owo.ui.component.ButtonComponent
+import io.wispforest.owo.ui.component.ButtonWidgetComponent
 import io.wispforest.owo.ui.component.TextBoxComponent
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.container.StackLayout
@@ -118,7 +118,7 @@ class DownloadScreen : ModScreen() {
                 id = "download"
                 sizing = fixed(12)
                 tooltipText = DOWNLOAD.translation()
-                renderer = ButtonComponent.Renderer.flat(0, 0, 0)
+                renderer = ButtonWidgetComponent.Renderer.flat(0, 0, 0)
             }
         }
 
@@ -141,7 +141,7 @@ class DownloadScreen : ModScreen() {
         url.onKeyPress { key, _, _ ->
             (key == GLFW.GLFW_KEY_ENTER) then { download(path, url) }
         }
-        childById<ButtonComponent>("download")!!.onPress {
+        childById<ButtonWidgetComponent>("download")!!.onPress {
             download(path, url)
         }
     }

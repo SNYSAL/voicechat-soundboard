@@ -4,19 +4,19 @@ package dev.kikugie.kowoui.access
 
 import dev.kikugie.kowoui.unsupported
 import io.wispforest.owo.ui.component.*
-import io.wispforest.owo.ui.component.ButtonComponent.Renderer
+import io.wispforest.owo.ui.component.ButtonWidgetComponent.Renderer
 //? if =1.21.8 {
 import io.wispforest.owo.ui.core.*
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
 import io.wispforest.owo.ui.core.*
 //?}
-import net.minecraft.client.gui.components.EditBox
+import net.minecraft.client.gui.widget.TextFieldWidget
 import org.joml.Matrix4f
 import net.minecraft.entity.Entity
 import net.minecraft.item.ItemStack
 import net.minecraft.text.Style
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 import java.util.function.Consumer
 import java.util.function.Function
 
@@ -161,7 +161,7 @@ var SliderComponent.messageProvider: Function<String, Text>
         message(value)
     }
 
-var ButtonComponent.renderer: Renderer
+var ButtonWidgetComponent.renderer: Renderer
     get() = renderer()
     set(value) {
         renderer(value)
@@ -251,7 +251,7 @@ var LabelComponent.text: Text
         text(value)
     }
 
-var ButtonComponent.textShadow: Boolean
+var ButtonWidgetComponent.textShadow: Boolean
     get() = textShadow()
     set(value) {
         textShadow(value)
@@ -293,21 +293,21 @@ var TextureComponent.visibleArea: PositionedRectangle
         visibleArea(value)
     }
 
-var EditBox.placeholder: Text?
+var TextFieldWidget.placeholder: Text?
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {
         setPlaceholder(value)
     }
 
-var EditBox.suggestion: String?
+var TextFieldWidget.suggestion: String?
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {
         setSuggestion(value)
     }
 
-var EditBox.maxLength: Int
+var TextFieldWidget.maxLength: Int
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {

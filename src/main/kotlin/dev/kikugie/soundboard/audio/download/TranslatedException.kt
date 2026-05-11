@@ -1,5 +1,5 @@
 package dev.kikugie.soundboard.audio.download
 
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 
 class TranslatedException(val text: Text) : Exception()

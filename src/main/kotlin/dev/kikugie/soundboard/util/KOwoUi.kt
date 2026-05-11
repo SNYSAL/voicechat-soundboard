@@ -13,7 +13,7 @@ import io.wispforest.owo.ui.inject.GreedyInputUIComponent as GreedyInputComponen
 //?}
 import io.wispforest.owo.ui.core.Color
 import net.minecraft.client.font.TextRenderer
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 import net.minecraft.util.Util
 import net.minecraft.util.math.MathHelper
 import kotlin.math.cos

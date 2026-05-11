@@ -3,7 +3,7 @@ package dev.kikugie.soundboard.audio.data
 import dev.kikugie.kowoui.fallbackTranslation
 import dev.kikugie.soundboard.MOD_ID
 import dev.kikugie.soundboard.audio.prefix
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 import java.io.InputStream
 
 data class SoundEntry(

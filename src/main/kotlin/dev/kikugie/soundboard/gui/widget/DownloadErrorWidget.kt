@@ -11,7 +11,7 @@ import io.wispforest.owo.ui.core.Sizing.*
 import io.wispforest.owo.ui.core.Surface
 import net.minecraft.entity.EntityType
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.network.chat.Component
+import net.minecraft.text.Text
 
 class DownloadErrorWidget(message: Text) : FlowLayout(expand(), content(), Algorithm.HORIZONTAL) {
     init {
