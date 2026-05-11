@@ -11,7 +11,11 @@ import dev.kikugie.soundboard.gui.widget.SidebarWidget
 import io.wispforest.owo.ui.base.BaseOwoScreen
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.container.StackLayout
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+//?}
 import io.wispforest.owo.ui.core.Insets.both
 import io.wispforest.owo.ui.core.Insets.of
 import io.wispforest.owo.ui.core.OwoUIAdapter

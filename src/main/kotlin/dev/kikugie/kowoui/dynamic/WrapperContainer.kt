@@ -1,7 +1,11 @@
 package dev.kikugie.kowoui.dynamic
 
 import io.wispforest.owo.ui.container.WrappingParentComponent
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+//?}
 import io.wispforest.owo.ui.core.OwoUIDrawContext
 import io.wispforest.owo.ui.core.Sizing.content
 

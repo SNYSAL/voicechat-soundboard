@@ -5,8 +5,13 @@ package dev.kikugie.kowoui.experimental
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.container.GridLayout
 import io.wispforest.owo.ui.container.StackLayout
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
 import io.wispforest.owo.ui.core.ParentComponent
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+import io.wispforest.owo.ui.core.UIComponent as ParentComponent
+//?}
 
 operator fun <P : ParentComponent, T : Component> P.plusAssign(component: T) = when (this) {
     is AppendableParentComponent -> addChild(component)

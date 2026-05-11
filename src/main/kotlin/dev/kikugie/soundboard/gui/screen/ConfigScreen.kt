@@ -9,7 +9,11 @@ import dev.kikugie.kowoui.horizontalFlow
 import dev.kikugie.kowoui.label
 import dev.kikugie.kowoui.util.CombinedAlignment
 import io.wispforest.owo.ui.container.FlowLayout
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+//?}
 import io.wispforest.owo.ui.core.Sizing.fill
 import io.wispforest.owo.ui.core.Sizing.fixed
 import net.minecraft.text.Text

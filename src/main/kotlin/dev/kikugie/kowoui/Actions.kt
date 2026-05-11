@@ -5,8 +5,13 @@ package dev.kikugie.kowoui
 import io.wispforest.owo.ui.component.*
 import io.wispforest.owo.ui.container.CollapsibleContainer
 import io.wispforest.owo.ui.core.Color
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
 import io.wispforest.owo.ui.core.Component.FocusSource
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+import io.wispforest.owo.ui.core.UIComponent.FocusSource
+//?}
 import io.wispforest.owo.ui.event.*
 
 fun <T : SlimSliderComponent> T.onChange(action: (Double) -> Unit) =

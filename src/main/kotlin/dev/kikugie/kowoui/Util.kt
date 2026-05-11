@@ -2,7 +2,11 @@
 
 package dev.kikugie.kowoui
 
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+//?}
 import io.wispforest.owo.ui.core.Insets
 import io.wispforest.owo.ui.core.ParentComponent
 import io.wispforest.owo.ui.parsing.UIModel

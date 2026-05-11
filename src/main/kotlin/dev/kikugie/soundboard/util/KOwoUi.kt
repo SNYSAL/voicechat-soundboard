@@ -1,10 +1,17 @@
 package dev.kikugie.soundboard.util
 
-import io.wispforest.owo.ui.core.Color
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
-import io.wispforest.owo.ui.core.OwoUIDrawContext
 import io.wispforest.owo.ui.core.ParentComponent
+import io.wispforest.owo.ui.core.OwoUIDrawContext
 import io.wispforest.owo.ui.inject.GreedyInputComponent
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+import io.wispforest.owo.ui.core.UIComponent as ParentComponent
+import io.wispforest.owo.ui.core.OwoUIDrawContext
+import io.wispforest.owo.ui.inject.GreedyInputComponent
+//?}
+import io.wispforest.owo.ui.core.Color
 import net.minecraft.client.font.TextRenderer
 import net.minecraft.text.Text
 import net.minecraft.util.Util

@@ -17,9 +17,8 @@ plugins {
 
 stonecutter {
     create(rootProject) {
-        // 1.21.11 + 26.1 require porting to owo-lib 0.13's UIComponent rebrand
-        // (520 compile errors on 1.21.11). Tracked in MIGRATION.md.
-        versions("1.21.8")
+        versions("1.21.8", "1.21.11")
+        version("26.1", "26.1.2")
         vcsVersion = "1.21.8"
     }
 }

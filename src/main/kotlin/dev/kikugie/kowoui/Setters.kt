@@ -3,7 +3,11 @@ package dev.kikugie.kowoui
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.container.GridLayout
 import io.wispforest.owo.ui.container.StackLayout
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+//?}
 
 inline fun <T : Component> FlowLayout.child(build: () -> T): T =
     build().also { this@child.child(it) }

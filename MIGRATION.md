@@ -2,29 +2,63 @@
 
 This fork ports [kikugie/voicechat-soundboard](https://github.com/kikugie/voicechat-soundboard)
 from upstream's 1.21.4 multi-module layout to a single-jar
-[Stonecutter](https://stonecutter.kikugie.dev/) build for **Minecraft 1.21.8**.
+[Stonecutter](https://stonecutter.kikugie.dev/) build for **Minecraft 1.21.8 (Primary)** with
+**partial support for 1.21.11 and 26.1.x** (requires additional testing and API fixes).
 
 ## What ships
 
 - ✅ `1.21.8` — Fabric, Yarn mappings, Java 21. Builds and runs.
   Single jar with both SVC + Plasmo Voice entrypoints baked in.
+- 🟡 `1.21.11` — Fabric, Yarn mappings, Java 21. **Config added, compilation in progress**
+  Port to owo-lib 0.13's UIComponent rebrand (Component → UIComponent) partially complete.
+  ~50 compile errors remain related to API signature changes in Surface, accessors, and type inference.
+- 🟡 `26.1.x` — Fabric, Mojang Mappings (no yarn), Java 25. **Config added, not yet tested**
+  Requires additional mojmap name translation beyond the owo-lib 0.13 changes.
 
-## What was scoped out
+## Work completed for 1.21.11 / 26.1 support
 
-`1.21.11` and `26.1.x` were researched and added to Stonecutter, then
-removed when source migration cost exceeded the session budget:
+### Configuration (✅ Done)
+- Added version blocks to `settings.gradle.kts`: `versions("1.21.8", "1.21.11")` and `version("26.1", "26.1.2")`
+- Added dependency matrix to `stonecutter.properties.toml` with all resolved versions
+- Updated `README.md` build status table
 
-- **owo-lib 0.13** (the only version available for 1.21.11+) renamed
-  `Component → UIComponent` to avoid a collision with Mojang's new
-  `net.minecraft.network.chat.Component`. This affects ~31 source
-  files across `kowoui` and `soundboard.gui` (520 compile errors).
-  Callback signatures also changed (`KeyInput`, `CharInput`, `Click`).
-- **26.1.x** additionally requires switching every yarn class name to
-  Mojang Mappings (`net.minecraft.entity.Entity` →
-  `net.minecraft.world.entity.Entity` etc) and the Java 25 toolchain.
+### Source patching (🟡 Partial)
+Applied Stonecutter `//? if =1.21.8 {` conditional blocks to ~20 files:
+- **Core imports**: `kowoui/Builders.kt`, `kowoui/Actions.kt`, `kowoui/Util.kt`, `kowoui/Setters.kt`
+- **Experimental**: `kowoui/experimental/{AppendableParentComponent,MutableParentComponent,Setters}.kt`
+- **Dynamic**: `kowoui/dynamic/{Builders,WrapperContainer}.kt`
+- **Soundboard**: `soundboard/gui/component/FlexibleGridLayout.kt`, `soundboard/gui/screen/{ConfigScreen,ModScreen}.kt`, `soundboard/util/KOwoUi.kt`, `soundboard/util/Util.kt`
 
-The version matrix that was researched is preserved here so a future
-migration doesn't have to redo it:
+Pattern used: aliasing `UIComponent as Component` to minimize invasive changes:
+```kotlin
+//? if =1.21.8 {
+import io.wispforest.owo.ui.core.Component
+//? } else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+//? }
+```
+
+### Keyboard API changes (✅ Done)
+Handled `Screen.hasShiftDown() / hasControlDown() / hasAltDown()` removal in 1.21.11+:
+```kotlin
+//? if =1.21.8 {
+val shiftDown: Boolean get() = Screen.hasShiftDown()
+//? } else {
+val shiftDown: Boolean get() = GLFW.glfwGetKey(...) == GLFW.GLFW_PRESS
+//? }
+```
+
+## Remaining issues for 1.21.11 / 26.1
+
+| Issue | Scope | Files affected | Estimate |
+|-------|-------|-----------------|----------|
+| Surface API changes (accessor methods) | owo-lib 0.13 | `kowoui/access/Parents.kt` and callers | ~20 errors |
+| Type inference failures in `let` chains | Type system | Multiple GUI builders | ~30 errors |
+| ButtonWidget.Text vs Text mismatch | Minecraft API | `soundboard/gui/screen/*.kt` | ~5 errors |
+| GridLayout signature changes | owo-lib 0.13 | `soundboard/gui/component/FlexibleGridLayout.kt` | ~3 errors |
+| **Total remaining** | | **~50 compile errors** | 4-6 hours |
+
+## Dependency version matrix
 
 | | 1.21.8 | 1.21.11 | 26.1.2 |
 |---|---|---|---|
@@ -54,26 +88,30 @@ migration doesn't have to redo it:
 | `me.fallenbreath.yamlang` 1.4.0 | 1.5.0 (Gradle 9 compat) | `build.gradle.kts` |
 | modmenu 13.0.0-beta.1 (1.21.4) | 15.0.2 (1.21.8) | `stonecutter.properties.toml` |
 
-## Build / run commands
+## To complete the 1.21.11 / 26.1 port
 
-```bash
-./gradlew :1.21.8:build       # produces versions/1.21.8/build/libs/soundboard-0.7.1+1.21.8.jar
-./gradlew :1.21.8:runClient   # boots Minecraft 1.21.8 with the dev mod loaded
-```
+1. **Surface accessor API** — Trace and conditionally gate Surface property accesses in `kowoui/access/Parents.kt`. owo-lib 0.13 may have changed how surface() works.
 
-## To resume the 1.21.11 / 26.1 port
+2. **Type inference in builders** — The `when { }.let { }` chains are failing type inference. May need explicit type annotations or lambda restructuring.
 
-1. Re-add `versions("1.21.11")` / `version("26.1", "26.1.2")` in
-   `settings.gradle.kts` and re-add the version blocks in
-   `stonecutter.properties.toml` from the matrix above.
-2. Use Stonecutter `//? if =1.21.8 {` … `//?} else {` blocks around
-   each owo import that diverges between 0.12 and 0.13.
-3. Walk every `Click`/`KeyInput`/`CharInput`-style callback and rewrite
-   the lambda signatures.
-4. For 26.1: switch the entire mod to Mojang Mappings and gate yarn
-   class names per-version. Bump the toolchain to JDK 25.
+3. **GridLayout and container changes** — Determine if child insertion / getChild() APIs changed and gate accordingly.
+
+4. **26.1 mojmap translation** — Once 1.21.11 compiles, add per-version mojmap gatekeeping for class names (e.g., `net.minecraft.entity.Entity` vs `net.minecraft.world.entity.Entity`).
+
+5. **Test in real environment** — Build and run on actual Minecraft 1.21.11 and 26.1 servers with both SVC and Plasmo backends.
 
 The original SVC 2.5 → 2.6 audio decoder rewrite kikugie called out
 in upstream issues #32 / #36 has **not** been done — runtime listens
 on the new 2.6 events but reuses the 2.5-shaped audio path. Test in
 a real server before relying on it.
+
+## Build / run commands
+
+```bash
+./gradlew :1.21.8:build       # produces versions/1.21.8/build/libs/soundboard-0.7.1+1.21.8.jar
+./gradlew :1.21.8:runClient   # boots Minecraft 1.21.8 with the dev mod loaded
+
+# When 1.21.11 / 26.1 are complete:
+./gradlew :1.21.11:build
+./gradlew :26.1:build
+```

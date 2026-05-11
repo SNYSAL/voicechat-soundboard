@@ -5,7 +5,11 @@ package dev.kikugie.kowoui
 import io.wispforest.owo.ui.component.*
 import io.wispforest.owo.ui.component.SlimSliderComponent.Axis
 import io.wispforest.owo.ui.container.*
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+//?}
 import io.wispforest.owo.ui.core.Sizing
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity

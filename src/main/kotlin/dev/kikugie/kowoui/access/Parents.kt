@@ -3,7 +3,16 @@
 package dev.kikugie.kowoui.access
 
 import dev.kikugie.kowoui.util.CombinedAlignment
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.*
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent
+import io.wispforest.owo.ui.core.UIComponent as ParentComponent
+import io.wispforest.owo.ui.core.Insets
+import io.wispforest.owo.ui.core.Surface
+import io.wispforest.owo.ui.core.Sizing
+import io.wispforest.owo.ui.core.Alignment
+//?}
 
 var ParentComponent.allowOverflow: Boolean
     get() = allowOverflow()

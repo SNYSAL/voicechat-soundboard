@@ -1,6 +1,10 @@
 package dev.kikugie.kowoui.dynamic
 
+//? if =1.21.8 {
 import io.wispforest.owo.ui.core.Component
+//?} else {
+import io.wispforest.owo.ui.core.UIComponent as Component
+//?}
 import net.minecraft.text.Text
 
 inline infix fun <T : Component> T.wrap(build: WrapperContainer<T>.() -> Unit) =
