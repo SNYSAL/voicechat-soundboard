@@ -12,7 +12,7 @@ import io.wispforest.owo.ui.core.BaseParentComponent
 import io.wispforest.owo.ui.component.Components
 import io.wispforest.owo.ui.container.Containers
 import io.wispforest.owo.ui.container.WrappingParentComponent
-import net.minecraft.text.Text as ButtonWidgetText
+import net.minecraft.network.chat.Component as ButtonWidgetText
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
 import io.wispforest.owo.ui.base.BaseUIComponent as BaseComponent
@@ -20,7 +20,7 @@ import io.wispforest.owo.ui.base.BaseParentUIComponent as BaseParentComponent
 import io.wispforest.owo.ui.component.UIComponents as Components
 import io.wispforest.owo.ui.container.UIContainers as Containers
 import io.wispforest.owo.ui.container.WrappingParentUIComponent as WrappingParentComponent
-import net.minecraft.client.gui.widget.ButtonWidget.Text as ButtonWidgetText
+import net.minecraft.client.gui.components.ButtonWidget.Text as ButtonWidgetText
 //?}
 import io.wispforest.owo.ui.core.Sizing
 import net.minecraft.world.level.block.BlockState
@@ -31,8 +31,8 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityType
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.text.Text
-import net.minecraft.util.Identifier
+import net.minecraft.network.chat.Component
+import net.minecraft.resources.ResourceLocation
 
 @JvmOverloads inline fun stack(build: StackLayout.() -> Unit = {}): StackLayout =
     Containers.stack(Sizing.content(), Sizing.content()).apply(build)
