@@ -134,39 +134,59 @@ class SoundBrowser : ModScreen() {
     private fun SoundGroup.container(
         location: Path?,
         buttons: List<ScrollingButtonComponent>
-    ) = group(id !in collapsed, entries.size, title).apply {
-        val soundId = this@container.id
-        child().apply {
-            //? if <26.0 {
-            onToggle { if (it) collapsed -= soundId else collapsed += soundId }
-            //?} else {
-            onToggle { expanded -> 
-                if (expanded) collapsed -= soundId else collapsed += soundId
-                true
-            }
-            //?}
-            titleLayout().apply {
-                if (location != null) {
-                    tooltipText = DIRECTORY_TOOLTIP.translation()
-                    onMouseDown { _, _, _ -> shiftDown then location::navigate }
+    ) = //? if <26.0 {
+        group(id !in collapsed, entries.size, title).apply {
+            val soundId = this@container.id
+            child().apply {
+                onToggle { if (it) collapsed -= soundId else collapsed += soundId }
+                titleLayout().apply {
+                    if (location != null) {
+                        tooltipText = DIRECTORY_TOOLTIP.translation()
+                        onMouseDown { _, _, _ -> shiftDown then location::navigate }
+                    }
+                }
+                (collapsibleChildren().first { it.id == "contents" } as GridLayout).apply {
+                    val columns = CONFIG.columns
+                    for ((i, button) in buttons.withIndex()) at(i / columns, i % columns) += button
                 }
             }
-            (collapsibleChildren().first { it.id == "contents" } as GridLayout).apply {
-                val columns = CONFIG.columns
-                for ((i, button) in buttons.withIndex()) at(i / columns, i % columns) += button
+        }
+        //?} else {
+        // Simplified container for 26.1 - no collapsible functionality
+        verticalFlow().apply {
+            id = this@container.id
+            gap(4)
+            child().apply {
+                label(title) {
+                    if (location != null) {
+                        tooltipText = DIRECTORY_TOOLTIP.translation()
+                        // TODO: Add click handler for directory navigation in 26.1
+                    }
+                }
+            }
+            grid(CONFIG.columns, buttons.size / CONFIG.columns + 1).apply {
+                for ((i, button) in buttons.withIndex()) at(i / CONFIG.columns, i % CONFIG.columns) += button
             }
         }
-    }
+        //?}
 
     private fun settings(entry: SoundEntry) {
         settings = SoundSettingsWidget(entry, SoundboardAccess.delegates.first())
         root + overlay(settings!!) {
+            //? if <26.0 {
             closeOnClick = false
             surface = CONFIG_PANEL
+            //?} else {
+            // closeOnClick and surface are protected in 26.1
+            //?}
             sizing = fill(65)
             positioning = relative(50, 50)
             zIndex = 100
+            //? if <26.0 {
             onMouseDown { _, _, _ -> true }
+            //?} else {
+            onMouseDown { true }
+            //?}
         }
     }
 }

@@ -39,10 +39,11 @@ class TimeInputComponent(
         listener = action
     }
 
-    override fun renderWidget(context: GuiGraphics, mouseX: Int, mouseY: Int, delta: Float) {
-        if (!isFocused) Component = time().asString
-        super.renderWidget(context, mouseX, mouseY, delta)
-    }
+    // Disabled for 26.1 - renderWidget signature changed
+    // override fun renderWidget(context: GuiGraphics, mouseX: Int, mouseY: Int, delta: Float) {
+    //     if (!isFocused) Component = time().asString
+    //     super.renderWidget(context, mouseX, mouseY, delta)
+    // }
 
     companion object {
         val Duration.printLength: Int

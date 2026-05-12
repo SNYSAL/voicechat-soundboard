@@ -87,6 +87,7 @@ class SoundSettingsWidget(
                 verticalSizing = fixed(8)
                 center { x + (width - it) / 2 }
             }
+            //? if <26.0 {
             this += object : ColoredTextComponent() {
                 init {
                     id = "index"
@@ -114,6 +115,7 @@ class SoundSettingsWidget(
                 private fun isValid(Component: String) =
                     Component.trim().toIntOrNull()?.takeIf { it in -1..<CONFIG.favourites.size } != null
             }
+            //?}
             this += button(STAR_LABEL(favourite)) {
                 id = "favourite"
                 sizing = fixed(8)
@@ -195,7 +197,11 @@ class SoundSettingsWidget(
             at(1, 1) += dynamicButton {
                 id = "play"
                 horizontalSizing = fixed(20)
+                //? if <26.0 {
                 tooltipText = PLAY_TOOLTIP.translation(ModKeyBinds["browser"]!!.boundKeyLocalizedText.string)
+                //?} else {
+                tooltipText = PLAY_TOOLTIP.translation(ModKeyBinds["browser"]!!.toString())
+                //?}
                 Component { PLAY_LABEL(access.scheduler.playing) }
                 onPress {
                     if (access.scheduler.playing) access.scheduler.reset()

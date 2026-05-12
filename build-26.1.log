@@ -1,0 +1,593 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.5.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Configuration on demand is an incubating feature.
+Running Stonecutter 0.9.3
+
+> Configure project :26.1
+Fabric Loom: 1.16.1
+[DEBUG_LOG] Mappings for 26.1.2: Mojang
+
+> Task :26.1:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :26.1:stonecutterPrepare
+> Task :26.1:stonecutterGenerate
+> Task :26.1:processResources
+> Task :26.1:yamlangConvertMainResources
+> Task :26.1:processIncludeJars
+> Task :26.1:sourcesJar
+> Task :26.1:stonecutterPrepareTest FROM-CACHE
+> Task :26.1:stonecutterGenerateTest NO-SOURCE
+> Task :26.1:processTestResources NO-SOURCE
+> Task :26.1:compileKotlin
+> Task :26.1:validateAccessWidener
+
+> Task :26.1:compileKotlin
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:17:49 Conflicting import: imported name 'UIComponent' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:26:40 Unresolved reference 'BlockState'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:29:32 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:34:48 Conflicting import: imported name 'Component' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:35:32 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:52:31 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:52:92 Type argument is not within its bounds: must be subtype of 'UIComponent!'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:52:129 Type argument is not within its bounds: must be subtype of 'UIComponent!'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:53:16 Cannot infer type for type parameter 'C'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:53:69 Argument type mismatch: actual type is 'T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> horizontalScroll)', but 'uninferred C! (of fun <C : UIComponent!> horizontalScroll)' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:53:76 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:55:31 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:55:90 Type argument is not within its bounds: must be subtype of 'UIComponent!'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:55:127 Type argument is not within its bounds: must be subtype of 'UIComponent!'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:56:16 Cannot infer type for type parameter 'C'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:56:67 Argument type mismatch: actual type is 'T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> verticalScroll)', but 'uninferred C! (of fun <C : UIComponent!> verticalScroll)' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:56:74 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:58:31 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:58:88 Type argument is not within its bounds: must be subtype of 'UIComponent!'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:58:128 Type argument is not within its bounds: must be subtype of 'UIComponent!'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:59:16 Cannot infer type for type parameter 'C'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:59:62 Argument type mismatch: actual type is 'T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> draggable)', but 'uninferred C! (of fun <C : UIComponent!> draggable)' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:59:69 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:61:45 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:64:31 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:64:84 Type argument is not within its bounds: must be subtype of 'UIComponent!'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:64:122 Type argument is not within its bounds: must be subtype of 'UIComponent!'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:65:16 Cannot infer type for type parameter 'C'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:65:24 Argument type mismatch: actual type is 'T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> overlay)', but 'uninferred C! (of fun <C : UIComponent!> overlay)' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:65:31 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:77:44 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:96:39 Unresolved reference 'BlockState'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:99:39 Unresolved reference 'BlockState'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:102:39 Unresolved reference 'BlockState'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:108:43 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:111:46 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:114:51 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:129:37 Unresolved reference 'SpriteResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:130:27 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:130:27 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T> T.apply(block: T.() -> Unit): T
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:132:41 Unresolved reference 'Sprite'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:133:31 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:133:31 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T> T.apply(block: T.() -> Unit): T
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Builders.kt:136:14 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:11:49 Conflicting import: imported name 'UIComponent' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:15:51 Unresolved reference 'Component'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:19:35 Conflicting import: imported name 'Component' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:26:25 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:26:37 None of the following candidates is applicable:
+
+interface UIComponent : Any, PositionedRectangle:
+  Classifier 'interface UIComponent : Any, PositionedRectangle' does not have a companion object, so it cannot be used as an expression.
+
+interface Component : Any, Message, FormattedText:
+  Classifier 'interface Component : Any, Message, FormattedText' does not have a companion object, so it cannot be used as an expression.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:26:47 Unresolved reference 'of'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:27:46 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:27:58 None of the following candidates is applicable:
+
+interface UIComponent : Any, PositionedRectangle:
+  Classifier 'interface UIComponent : Any, PositionedRectangle' does not have a companion object, so it cannot be used as an expression.
+
+interface Component : Any, Message, FormattedText:
+  Classifier 'interface Component : Any, Message, FormattedText' does not have a companion object, so it cannot be used as an expression.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:27:68 Unresolved reference 'translatable'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:28:69 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:28:81 None of the following candidates is applicable:
+
+interface UIComponent : Any, PositionedRectangle:
+  Classifier 'interface UIComponent : Any, PositionedRectangle' does not have a companion object, so it cannot be used as an expression.
+
+interface Component : Any, Message, FormattedText:
+  Classifier 'interface Component : Any, Message, FormattedText' does not have a companion object, so it cannot be used as an expression.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:28:91 Unresolved reference 'translatableWithFallback'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:30:25 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:31:15 Argument type mismatch: actual type is 'Class<T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> ParentUIComponent.childById)>', but 'Class<(UIComponent & T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> ParentUIComponent.childById)..UIComponent? & T? (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> ParentUIComponent.childById))>' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:33:25 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/Util.kt:36:23 Argument type mismatch: actual type is 'Class<T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> UIModel.template)>', but 'Class<(UIComponent & T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> UIModel.template)..UIComponent? & T? (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> UIModel.template))>!' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:9:49 Conflicting import: imported name 'UIComponent' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:13:33 Unresolved reference 'tooltip'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:14:35 Conflicting import: imported name 'Component' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:16:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:17:13 Unresolved reference 'cursorStyle'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:19:9 Unresolved reference 'cursorStyle'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:22:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:23:13 Unresolved reference 'horizontalSizing'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:23:13 Return type mismatch: expected 'Sizing', actual 'MatchGroup?'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:25:9 Unresolved reference 'horizontalSizing'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:28:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:29:13 Unresolved reference 'id'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:31:9 Unresolved reference 'id'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:34:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:35:13 Unresolved reference 'margins'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:35:13 Return type mismatch: expected 'Insets', actual 'MatchGroup?'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:37:9 Unresolved reference 'margins'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:40:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:41:13 Unresolved reference 'positioning'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:41:13 Return type mismatch: expected 'Positioning', actual 'MatchGroup?'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:43:9 Unresolved reference 'positioning'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:46:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:50:9 Unresolved reference 'sizing'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:53:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:53:29 Unresolved reference 'TooltipComponent'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:54:13 Unresolved reference 'tooltip'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:56:9 Unresolved reference 'tooltip'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:59:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:59:28 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:63:9 Unresolved reference 'tooltip'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:66:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:66:40 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:70:9 Unresolved reference 'tooltip'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:73:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:74:13 Unresolved reference 'verticalSizing'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:74:13 Return type mismatch: expected 'Sizing', actual 'MatchGroup?'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:76:9 Unresolved reference 'verticalSizing'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:86:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:92:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:93:13 Unresolved reference 'horizontalSizing'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:94:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:95:13 Unresolved reference 'margins'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:96:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:97:13 Unresolved reference 'positioning'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:98:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:99:13 Unresolved reference 'verticalSizing'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:100:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:101:13 Unresolved reference 'focusHandler'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:102:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:103:13 Unresolved reference 'hasParent'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:104:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:105:13 Unresolved reference 'parent'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:106:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:107:13 Unresolved reference 'root'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:119:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:120:13 Unresolved reference 'x'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:121:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:122:13 Unresolved reference 'y'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:123:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:124:13 Unresolved reference 'width'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:125:5 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/BaseComponents.kt:126:13 Unresolved reference 'height'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:11:49 Conflicting import: imported name 'UIComponent' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:19:48 Conflicting import: imported name 'Component' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:43:13 Unresolved reference 'isChecked'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:92:13 Unresolved reference 'drawsBackground'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:94:9 Unresolved reference 'setDrawsBackground'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:115:35 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:157:55 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:248:31 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:249:13 Unresolved reference 'Component'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:251:9 Unresolved reference 'Component'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:266:59 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:296:26 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/access/Components.kt:300:9 Cannot access 'field hint: Component?': it is private in 'net.minecraft.client.gui.components.EditBox'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:7:49 Conflicting import: imported name 'UIComponent' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:8:51 Unresolved reference 'Component'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:10:35 Conflicting import: imported name 'Component' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:12:23 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:12:65 Type argument is not within its bounds: must be subtype of 'UIComponent'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:13:5 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:13:22 Argument type mismatch: actual type is 'T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> T.wrap)', but 'UIComponent' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:13:28 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:22:51 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:22:63 Parameter 'Component' is uninitialized here.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:22:73 Unresolved reference 'empty'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:26:50 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:26:62 Parameter 'Component' is uninitialized here.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/Builders.kt:26:72 Unresolved reference 'empty'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/ColoredTextComponent.kt:9:90 Unresolved reference 'Component'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/DynamicLabelComponent.kt:15:9 Classifier 'interface Component : Any, Message, FormattedText' does not have a companion object, so it cannot be used as an expression.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/DynamicLabelComponent.kt:15:9 Variable expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/DynamicLabelComponent.kt:15:19 Assignment type mismatch: actual type is 'Component', but 'Unit' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/kowoui/dynamic/DynamicLabelComponent.kt:16:33 Unresolved reference 'asOrderedText'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/ModKeyBinds.kt:4:39 Unresolved reference 'KeyMapping'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/ModKeyBinds.kt:18:20 Unresolved reference 'KeyBindingHelper'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/ModKeyBinds.kt:18:129 Argument type mismatch: actual type is 'String', but 'KeyMapping.Category' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/Soundboard.kt:19:22 Unresolved reference 'resource'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/Soundboard.kt:33:35 Unresolved reference 'ResourceType'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/data/SoundId.kt:7:32 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/data/SoundId.kt:25:52 Overload resolution ambiguity between candidates:
+constructor(str: String): SoundId
+constructor(id: ??? (Unresolved qualified name: ResourceLocation)): SoundId
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/data/SoundId.kt:26:21 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/data/SoundId.kt:26:41 Overload resolution ambiguity between candidates:
+constructor(str: String): SoundId
+constructor(id: ??? (Unresolved qualified name: ResourceLocation)): SoundId
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:13:22 Unresolved reference 'Component'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:14:22 Unresolved reference 'Component'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:16:35 Unresolved reference 'Components'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:149:86 Unresolved reference 'string'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:188:16 Unresolved reference 'Texts'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:188:49 Unresolved reference 'empty'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:226:90 Unresolved reference 'empty'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:227:100 Unresolved reference 'empty'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:228:21 Unresolved reference 'Style'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:232:29 Unresolved reference 'ClickEvent'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/CobaltAPI.kt:233:38 Unresolved reference 'getWithStyle'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/Downloader.kt:21:33 Unresolved reference 'Screen'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/Downloader.kt:36:70 Unresolved reference 'ConfirmScreen'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/Downloader.kt:40:11 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/Downloader.kt:46:16 Unresolved reference 'ConfirmScreen'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/Downloader.kt:61:40 Unresolved reference 'sendMessage'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/Downloader.kt:68:31 Unresolved reference 'sendMessage'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/Downloader.kt:78:17 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/download/Downloader.kt:78:55 Argument type mismatch: actual type is 'OverlayContainer<uninferred T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> overlay)>.() -> Unit', but 'OverlayContainer<uninferred T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> overlay)>.() -> Unit' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/FileAudioHolder.kt:55:21 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/FileAudioHolder.kt:55:52 Overload resolution ambiguity between candidates:
+fun read(resource: ??? (Unresolved qualified name: Resource)): Map<String, String>
+fun read(path: Path): Map<String, String>
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/FileAudioHolder.kt:55:74 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun String.Component(): ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/FileAudioHolder.kt:56:16 Return type mismatch: expected 'Component?', actual 'Any?'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/FileAudioHolder.kt:64:21 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/FileAudioHolder.kt:64:52 Overload resolution ambiguity between candidates:
+fun read(resource: ??? (Unresolved qualified name: Resource)): Map<String, String>
+fun read(path: Path): Map<String, String>
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/FileAudioHolder.kt:64:74 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun String.Component(): ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/PropertiesReader.kt:3:22 Unresolved reference 'resource'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/PropertiesReader.kt:8:24 Unresolved reference 'Resource'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/PropertiesReader.kt:8:45 Function invocation 'reader(...)' expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:11:22 Unresolved reference 'resource'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:12:22 Unresolved reference 'resource'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:13:32 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:20:1 Object 'ResourceAudioHolder' is not abstract and does not implement abstract members:
+fun load(p0: ResourceManager, p1: Executor): CompletableFuture<T>
+fun apply(p0: T, p1: ResourceManager, p2: Executor): CompletableFuture<Void>
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:28:33 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:29:5 'load' overrides nothing. Potential signatures for overriding:
+fun load(p0: ResourceManager, p1: Executor): CompletableFuture<GroupMap>
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:30:18 Unresolved reference 'ResourceManager'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:32:9 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:33:17 Unresolved reference 'findResources'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:33:50 Unresolved reference 'path'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:34:7 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:34:7 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:34:32 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:35:39 Cannot infer type for implicit value parameter 'it'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:35:39 Operator call 'component1()' is ambiguous for destructuring of type '??? (Unknown type for value parameter <destruct>)'. Applicable candidates:
+fun <T> Array<out T>.component1(): T
+fun ByteArray.component1(): Byte
+fun ShortArray.component1(): Short
+fun IntArray.component1(): Int
+fun LongArray.component1(): Long
+fun FloatArray.component1(): Float
+fun DoubleArray.component1(): Double
+fun BooleanArray.component1(): Boolean
+fun CharArray.component1(): Char
+fun <T> List<T>.component1(): T
+fun <K, V> Map.Entry<K, V>.component1(): K
+fun UIntArray.component1(): UInt
+fun ULongArray.component1(): ULong
+fun UByteArray.component1(): UByte
+fun UShortArray.component1(): UShort
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:35:39 Operator call 'component2()' is ambiguous for destructuring of type '??? (Unknown type for value parameter <destruct>)'. Applicable candidates:
+fun <T> Array<out T>.component2(): T
+fun ByteArray.component2(): Byte
+fun ShortArray.component2(): Short
+fun IntArray.component2(): Int
+fun LongArray.component2(): Long
+fun FloatArray.component2(): Float
+fun DoubleArray.component2(): Double
+fun BooleanArray.component2(): Boolean
+fun CharArray.component2(): Char
+fun <T> List<T>.component2(): T
+fun <K, V> Map.Entry<K, V>.component2(): V
+fun UIntArray.component2(): UInt
+fun ULongArray.component2(): ULong
+fun UByteArray.component2(): UByte
+fun UShortArray.component2(): UShort
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:36:15 The spread operator (*foo) cannot be applied to an argument of nullable type.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:39:32 Unresolved reference 'join'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:46:5 'apply' overrides nothing. Potential signatures for overriding:
+fun apply(p0: GroupMap, p1: ResourceManager, p2: Executor): CompletableFuture<Void>
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:48:18 Unresolved reference 'ResourceManager'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:54:32 Unresolved reference 'ResourceManager'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:54:53 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:54:77 Unresolved reference 'Resource'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:57:21 Unresolved reference 'getResource'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:57:36 Unresolved reference 'withPath'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:57:53 Unresolved reference 'removeSuffix'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:57:89 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:57:102 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:57:102 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:57:106 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:58:27 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:60:35 Unresolved reference 'toDoubleOrNull'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:61:33 Unresolved reference 'toDoubleOrNull'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:62:36 Unresolved reference 'toIntOrNull'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:66:23 Unresolved reference 'withPath'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:66:37 Unresolved reference 'removePrefix'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/audio/registry/ResourceAudioHolder.kt:67:48 Unresolved reference 'getInputStream'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/config/AudioConfig.kt:49:49 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/config/AudioConfig.kt:49:64 Overload resolution ambiguity between candidates:
+constructor(str: String): SoundId
+constructor(id: ??? (Unresolved qualified name: ResourceLocation)): SoundId
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:22:29 Unresolved reference 'gl'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:23:33 Unresolved reference 'Click'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:123:9 'onMouseDrag' overrides nothing. Potential signatures for overriding:
+fun onMouseDrag(p0: MouseButtonEvent!, p1: Double, p2: Double): Boolean
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:123:41 Unresolved reference 'Click'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:125:47 Unresolved reference 'x'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:133:9 'onMouseUp' overrides nothing. Potential signatures for overriding:
+fun onMouseUp(p0: MouseButtonEvent!): Boolean
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:133:39 Unresolved reference 'Click'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:142:21 Unresolved reference 'drawTexture'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:142:33 Unresolved reference 'RenderPipelines'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:143:21 Unresolved reference 'drawTexture'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/DurationCutterComponent.kt:143:33 Unresolved reference 'RenderPipelines'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingButtonComponent.kt:4:27 Unresolved reference 'text'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingButtonComponent.kt:14:33 Unresolved reference 'GuiGraphics'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingButtonComponent.kt:15:33 Unresolved reference 'tooltip'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingButtonComponent.kt:52:5 'renderWidget' overrides nothing.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingButtonComponent.kt:52:40 Unresolved reference 'GuiGraphics'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingButtonComponent.kt:53:15 Unresolved reference 'renderWidget'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingLabelComponent.kt:13:54 Parameter 'Component' is uninitialized here.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingLabelComponent.kt:13:64 Unresolved reference 'empty'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingLabelComponent.kt:20:32 Unresolved reference 'matrices'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingLabelComponent.kt:22:53 Unresolved reference 'scaleFactor'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingLabelComponent.kt:25:13 Classifier 'interface Component : Any, Message, FormattedText' does not have a companion object, so it cannot be used as an expression.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingLabelComponent.kt:26:13 Argument type mismatch: actual type is 'Unit', but 'Int' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingLabelComponent.kt:26:33 Unresolved reference 'getWidth'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/ScrollingLabelComponent.kt:26:42 Classifier 'interface Component : Any, Message, FormattedText' does not have a companion object, so it cannot be used as an expression.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/TimeInputComponent.kt:8:33 Unresolved reference 'GuiGraphics'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/TimeInputComponent.kt:22:9 Unresolved reference 'setTextPredicate'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/TimeInputComponent.kt:23:13 Unresolved reference 'Component'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/TimeInputComponent.kt:42:5 'renderWidget' overrides nothing.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/TimeInputComponent.kt:42:40 Unresolved reference 'GuiGraphics'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/TimeInputComponent.kt:43:25 Unresolved reference 'Component'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/TimeInputComponent.kt:44:15 Unresolved reference 'renderWidget'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/component/TimeInputComponent.kt:50:56 Unresolved reference 'textRenderer'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ConfigScreen.kt:15:49 Conflicting import: imported name 'UIComponent' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ConfigScreen.kt:19:35 Conflicting import: imported name 'Component' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ConfigScreen.kt:30:41 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ConfigScreen.kt:30:63 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ConfigScreen.kt:30:75 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ConfigScreen.kt:37:26 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ConfigScreen.kt:37:26 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T> T.apply(block: T.() -> Unit): T
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ConfigScreen.kt:37:32 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:24:33 Unresolved reference 'Screen'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:25:27 Unresolved reference 'DyeColor'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:71:37 Unresolved reference 'DyeColor'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:76:37 Unresolved reference 'DyeColor'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:85:11 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> T.wrap(build: WrapperContainer<T>.() -> Unit): ??? (Unknown type for type parameter T)
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:108:37 Unresolved reference 'DyeColor'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:111:15 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> T.wrap(build: WrapperContainer<T>.() -> Unit): ??? (Unknown type for type parameter T)
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:128:39 Unresolved reference 'InteractionHand'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:130:17 Unresolved reference 'ConfirmLinkScreen'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:138:48 Argument type mismatch: actual type is 'String', but 'Class<TextBoxComponent!>' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:138:48 No value passed for parameter 'p1'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:139:47 Argument type mismatch: actual type is 'String', but 'Class<TextBoxComponent!>' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:139:47 No value passed for parameter 'p1'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:144:36 Argument type mismatch: actual type is 'String', but 'Class<ButtonComponent!>' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:144:36 No value passed for parameter 'p1'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:153:25 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+var LabelComponent.Component: ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/DownloadScreen.kt:154:48 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+var LabelComponent.Component: ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ModScreen.kt:27:5 'shouldPause' overrides nothing.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ScreenManager.kt:11:34 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ScreenManager.kt:11:34 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ScreenManager.kt:11:38 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/ScreenManager.kt:11:65 Unresolved reference 'close'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:61:77 Argument type mismatch: actual type is 'String', but 'Class<FlowLayout!>' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:61:77 No value passed for parameter 'p1'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:72:5 'close' overrides nothing.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:75:15 Unresolved reference 'close'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:83:49 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:83:75 Argument type mismatch: actual type is 'ScrollContainer<uninferred T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> verticalScroll)>.() -> Unit', but 'ScrollContainer<uninferred T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> verticalScroll)>.() -> Unit' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:86:9 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+var ScrollContainer<*>.scrollbarThickness: Int
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:87:19 Assignment type mismatch: actual type is 'ScrollContainer.Scrollbar!', but 'ScrollContainerAccessor?' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:88:9 Cannot access 'field surface: Surface!': it is protected in 'io.wispforest.owo.ui.base.BaseParentUIComponent'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:89:9 Cannot access 'field padding: AnimatableProperty<Insets!>!': it is protected in 'io.wispforest.owo.ui.base.BaseParentUIComponent'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:89:9 'val' cannot be reassigned.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:89:17 Assignment type mismatch: actual type is 'Insets!', but 'AnimatableProperty<Insets!>!' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:110:7 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> T.wrap(build: WrapperContainer<T>.() -> Unit): ??? (Unknown type for type parameter T)
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:137:54 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:137:54 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T> T.apply(block: T.() -> Unit): T
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:137:60 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:139:17 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:139:17 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T> T.apply(block: T.() -> Unit): T
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:139:23 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:143:13 Unresolved reference 'onToggle'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:143:24 Cannot infer type for value parameter 'expanded'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:148:13 Unresolved reference 'titleLayout'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:148:27 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:148:33 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:151:21 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:154:14 Unresolved reference 'collapsibleChildren'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:154:47 Unresolved reference 'id'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:163:16 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:163:36 Argument type mismatch: actual type is 'OverlayContainer<uninferred T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> overlay)>.() -> Unit', but 'OverlayContainer<uninferred T (of fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> overlay)>.() -> Unit' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:164:13 Cannot access 'field closeOnClick: Boolean': it is protected in 'io.wispforest.owo.ui.container.OverlayContainer'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:165:13 Cannot access 'field surface: Surface!': it is protected in 'io.wispforest.owo.ui.base.BaseParentUIComponent'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:169:13 No value passed for parameter 'p0'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:169:25 Argument type mismatch: actual type is '(??? (Unknown lambda parameter type), ??? (Unknown lambda parameter type), ??? (Unknown lambda parameter type)) -> ??? (Unknown lambda return type)', but 'Boolean' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:169:27 Cannot infer type for implicit value parameter 'it'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:169:30 Cannot infer type for implicit value parameter 'it'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/screen/SoundBrowser.kt:169:33 Cannot infer type for implicit value parameter 'it'. Specify it explicitly.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/DownloadErrorWidget.kt:36:7 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])> T.wrap(build: WrapperContainer<T>.() -> Unit): ??? (Unknown type for type parameter T)
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:93:21 Classifier 'interface Component : Any, Message, FormattedText' does not have a companion object, so it cannot be used as an expression.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:93:21 Variable expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:93:31 Assignment type mismatch: actual type is 'String', but 'Unit' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:95:53 Unresolved reference 'textRenderer'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:98:37 Argument type mismatch: actual type is 'Unit', but 'String' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:98:37 Classifier 'interface Component : Any, Message, FormattedText' does not have a companion object, so it cannot be used as an expression.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:101:38 Argument type mismatch: actual type is 'Unit', but 'String' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:101:38 Classifier 'interface Component : Any, Message, FormattedText' does not have a companion object, so it cannot be used as an expression.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:105:17 'setText' overrides nothing.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:109:17 'write' overrides nothing.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:110:27 Unresolved reference 'write'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:111:34 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+var LabelComponent.Component: ??? (Ambiguity: Component, [io/wispforest/owo/ui/core/UIComponent, net/minecraft/network/chat/Component])
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/gui/widget/SoundSettingsWidget.kt:198:81 Unresolved reference 'boundKeyLocalizedText'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:9:49 Conflicting import: imported name 'UIComponent' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:15:29 Unresolved reference 'font'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:16:35 Conflicting import: imported name 'Component' is ambiguous.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:23:45 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:38:19 Unresolved reference 'TextRenderer'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:39:16 Overload resolution ambiguity between candidates:
+interface UIComponent : Any, PositionedRectangle
+interface Component : Any, Message, FormattedText
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:48:34 Unresolved reference 'getWidth'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:52:68 Argument type mismatch: actual type is 'Int', but 'Float' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:52:78 Argument type mismatch: actual type is 'Boolean', but 'OwoUIGraphics.TextAnchor!' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:55:22 Unresolved reference 'getMeasuringTimeMs'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:60:43 Argument type mismatch: actual type is 'Int', but 'Float' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:60:63 Argument type mismatch: actual type is 'Int', but 'Float' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/KOwoUi.kt:60:73 Argument type mismatch: actual type is 'Boolean', but 'OwoUIGraphics.TextAnchor!' was expected.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:7:32 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:19:25 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:19:44 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:20:45 Unresolved reference 'ResourceLocation'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:44:10 Unresolved reference 'getOperatingSystem'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:54:62 Cannot access 'field handle: Long': it is private in 'com.mojang.blaze3d.platform.Window'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:54:148 Cannot access 'field handle: Long': it is private in 'com.mojang.blaze3d.platform.Window'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:55:61 Cannot access 'field handle: Long': it is private in 'com.mojang.blaze3d.platform.Window'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:55:149 Cannot access 'field handle: Long': it is private in 'com.mojang.blaze3d.platform.Window'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:56:60 Cannot access 'field handle: Long': it is private in 'com.mojang.blaze3d.platform.Window'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:56:144 Cannot access 'field handle: Long': it is private in 'com.mojang.blaze3d.platform.Window'.
+e: file:///D:/voicechat-soundboard-forked/versions/26.1/build/generated/stonecutter/main/kotlin/dev/kikugie/soundboard/util/Util.kt:60:20 Unresolved reference 'currentScreen'.
+
+> Task :26.1:compileKotlin FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':26.1:compileKotlin' (registered by plugin 'org.jetbrains.kotlin.jvm').
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.btapi.BuildToolsApiCompilationWork
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 20s
+9 actionable tasks: 8 executed, 1 from cache

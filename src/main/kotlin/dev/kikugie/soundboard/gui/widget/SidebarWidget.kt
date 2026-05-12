@@ -13,6 +13,9 @@ import dev.kikugie.soundboard.util.currentScreen
 import dev.kikugie.soundboard.util.idOf
 import io.wispforest.owo.ui.component.ButtonComponent.Renderer.texture
 import io.wispforest.owo.ui.container.FlowLayout
+//? if >=26.0 {
+import net.minecraft.util.Identifier
+//?}
 import io.wispforest.owo.ui.core.Sizing.content
 import io.wispforest.owo.ui.core.Sizing.fixed
 import net.minecraft.client.gui.screens.Screen
@@ -32,7 +35,11 @@ class SidebarWidget(private val current: Screen) : FlowLayout(fixed(16), content
     private inline fun <reified T : Screen> tab(name: String, index: Int) = button {
         id = name
         sizing = fixed(16)
+        //? if <26.0 {
         renderer = texture(WIDGETS, index * 16, 0, 256, 256)
+        //?} else {
+        renderer = texture(WIDGETS, index * 16, 0, 256, 256)
+        //?}
         active = current !is T
         tooltipText = "soundboard.$name".translation()
         onPress { RenderSystem.queueFencedTask { currentScreen = T::class.createInstance() } }

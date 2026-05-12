@@ -12,8 +12,13 @@ import io.wispforest.owo.ui.core.OwoUIGraphics as OwoUIDrawContext
 import io.wispforest.owo.ui.inject.GreedyInputUIComponent as GreedyInputComponent
 //?}
 import io.wispforest.owo.ui.core.Color
+//? if <26.0 {
 import net.minecraft.client.font.TextRenderer
-import net.minecraft.network.chat.Component
+//?} else {
+import net.minecraft.client.gui.Font
+import net.minecraft.client.gui.Font as TextRenderer
+//?}
+import net.minecraft.network.chat.Component as ChatComponent
 import net.minecraft.util.Util
 import net.minecraft.util.Mth
 import kotlin.math.cos
@@ -34,9 +39,10 @@ fun OwoUIDrawContext.drawLinePrecise(x1: Double, y1: Double, x2: Double, y2: Dou
     drawLine(x1.toInt(), y1.toInt(), x2.toInt(), y2.toInt(), thickness, color)
 }
 
+//? if <26.0 {
 fun OwoUIDrawContext.drawScrollingText(
     textRenderer: TextRenderer,
-    Component: Component,
+    text: ChatComponent,
     centerX: Int,
     startX: Int,
     startY: Int,
@@ -45,11 +51,11 @@ fun OwoUIDrawContext.drawScrollingText(
     color: Int,
     textShadow: Boolean
 ) {
-    val textWidth = textRenderer.getWidth(Component)
+    val textWidth = textRenderer.getWidth(text)
     val j = (startY + endY - 9) / 2 + 1
     val buttonWidth = endX - startX
     if (textWidth <= buttonWidth)
-        drawText(textRenderer, Component, centerX - textWidth / 2, j, color, textShadow)
+        drawText(textRenderer, text, centerX - textWidth / 2, j, color, textShadow)
     else {
         val l = textWidth - buttonWidth
         val d = Util.getMeasuringTimeMs().toDouble() / 1000.0
@@ -57,10 +63,11 @@ fun OwoUIDrawContext.drawScrollingText(
         val f = sin((Math.PI / 2) * cos((Math.PI * 2) * d / e)) / 2.0 + 0.5
         val g = Mth.lerp(f, 0.0, l.toDouble())
         enableScissor(startX, startY, endX, endY)
-        drawText(textRenderer, Component, startX - g.toInt(), j, color, textShadow)
+        drawText(textRenderer, text, startX - g.toInt(), j, color, textShadow)
         disableScissor()
     }
 }
+//?}
 
 
 
