@@ -42,7 +42,7 @@ repositories {
 }
 
 dependencies {
-    minecraft("com.mojang:minecraft:${sc.current.version}")
+    minecraft("com.mojang:minecraft:26.1")
     // 26.1+ has no Yarn mappings yet — fall back to Mojang Mappings on those targets.
     // if (prop("deps.yarn_mappings").isNotBlank()) {
     //    mappings("net.fabricmc:yarn:${prop("deps.yarn_mappings")}:v2")
