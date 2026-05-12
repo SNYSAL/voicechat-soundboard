@@ -12,3 +12,6 @@ object SoundboardAccess {
     inline fun <T> first(selector: SoundboardEntrypoint.() -> T): T? = delegates.firstOrNull { it.connected }?.selector()
     inline fun forEach(action: SoundboardEntrypoint.() -> Unit) = delegates.forEach(action)
 }
+
+
+

@@ -1,6 +1,6 @@
-package dev.kikugie.soundboard.audio.registry
+package dev.kikugie.soundboard.audio.Registry
 
-import dev.kikugie.kowoui.text
+import dev.kikugie.kowoui.Component
 import dev.kikugie.kowoui.translation
 import dev.kikugie.soundboard.MOD_ID
 import dev.kikugie.soundboard.audio.*
@@ -9,7 +9,7 @@ import dev.kikugie.soundboard.audio.data.SoundGroup
 import dev.kikugie.soundboard.audio.data.SoundId
 import it.unimi.dsi.fastutil.objects.Object2LongMap
 import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 import java.nio.file.Path
 import kotlin.io.path.*
 import kotlin.io.path.PathWalkOption.BREADTH_FIRST
@@ -34,7 +34,7 @@ object FileAudioHolder {
 
     fun update() {
         if (cache(BASE_DIR)) return
-        val titles: MutableMap<SoundId, Text?> = mutableMapOf()
+        val titles: MutableMap<SoundId, Component?> = mutableMapOf()
         val buffer: MutableMap<SoundId, MutableList<SoundEntry>> = mutableMapOf()
         BASE_DIR.walk(BREADTH_FIRST).filter { it.extension == FORMAT }.forEach { path ->
             val id = BASE_DIR.relativize(path).invariantSeparatorsPathString.let {
@@ -50,9 +50,9 @@ object FileAudioHolder {
         sounds = buffer.mapValues { (id, list) -> SoundGroup(id, list.associateBy(SoundEntry::id), titles[id]) }
     }
 
-    private fun title(path: Path): Text? {
+    private fun title(path: Path): Component? {
         val props = path.resolve(".properties")
-        val title = runCatching { PropertiesReader.read(props)["title"]?.text() }.getOrNull()
+        val title = runCatching { PropertiesReader.read(props)["title"]?.Component() }.getOrNull()
         return when {
             title != null -> title
             path == BASE_DIR -> "soundboard.title".translation()
@@ -61,7 +61,7 @@ object FileAudioHolder {
     }
 
     private fun entry(id: SoundId, path: Path, props: Path): SoundEntry {
-        val title = runCatching { PropertiesReader.read(props)["title"]?.text() }.getOrNull()
+        val title = runCatching { PropertiesReader.read(props)["title"]?.Component() }.getOrNull()
         return SoundEntry(id, path::inputStream, null, title)
     }
 
@@ -76,3 +76,6 @@ object FileAudioHolder {
     private fun Path.withExtension(ext: String): Path =
         resolveSibling("${fileName.nameWithoutExtension}.$ext")
 }
+
+
+

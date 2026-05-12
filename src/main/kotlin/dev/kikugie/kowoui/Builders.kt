@@ -5,14 +5,14 @@ package dev.kikugie.kowoui
 import io.wispforest.owo.ui.component.*
 import io.wispforest.owo.ui.component.SlimSliderComponent.Axis
 import io.wispforest.owo.ui.container.*
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.core.Component
 import io.wispforest.owo.ui.core.BaseComponent
 import io.wispforest.owo.ui.core.BaseParentComponent
 import io.wispforest.owo.ui.component.Components
 import io.wispforest.owo.ui.container.Containers
 import io.wispforest.owo.ui.container.WrappingParentComponent
-import net.minecraft.text.Text as ButtonWidgetText
+import net.minecraft.network.chat.Component as ButtonText
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
 import io.wispforest.owo.ui.base.BaseUIComponent as BaseComponent
@@ -20,19 +20,19 @@ import io.wispforest.owo.ui.base.BaseParentUIComponent as BaseParentComponent
 import io.wispforest.owo.ui.component.UIComponents as Components
 import io.wispforest.owo.ui.container.UIContainers as Containers
 import io.wispforest.owo.ui.container.WrappingParentUIComponent as WrappingParentComponent
-import net.minecraft.client.gui.widget.ButtonWidget.Text as ButtonWidgetText
+import net.minecraft.client.gui.components.Button as ButtonText
 //?}
 import io.wispforest.owo.ui.core.Sizing
-import net.minecraft.block.BlockState
-import net.minecraft.block.entity.BlockEntity
-import net.minecraft.client.texture.Sprite
-import net.minecraft.client.util.SpriteResourceLocation
-import net.minecraft.entity.Entity
-import net.minecraft.entity.EntityType
-import net.minecraft.item.ItemStack
-import net.minecraft.nbt.NbtCompound
-import net.minecraft.text.Text
-import net.minecraft.util.Identifier
+import net.minecraft.world.level.block.BlockState
+import net.minecraft.world.level.block.entity.BlockEntity
+import net.minecraft.client.renderer.texture.TextureAtlasSprite
+import net.minecraft.resources.ResourceLocation
+import net.minecraft.world.entity.Entity
+import net.minecraft.world.entity.EntityType
+import net.minecraft.world.item.ItemStack
+import net.minecraft.nbt.CompoundTag as CompoundTag
+import net.minecraft.network.chat.Component as Component
+import net.minecraft.resources.ResourceLocation as ResourceLocation
 
 @JvmOverloads inline fun stack(build: StackLayout.() -> Unit = {}): StackLayout =
     Containers.stack(Sizing.content(), Sizing.content()).apply(build)
@@ -58,24 +58,24 @@ import net.minecraft.util.Identifier
 @JvmOverloads inline fun <T : Component> draggable(child: T, build: DraggableContainer<T>.() -> Unit = {}): DraggableContainer<T> =
     Containers.draggable(Sizing.content(), Sizing.content(), child).apply(build)
 
-@JvmOverloads inline fun collapsible(title: Text, expanded: Boolean, build: CollapsibleContainer.() -> Unit = {}): CollapsibleContainer =
+@JvmOverloads inline fun collapsible(title: Component, expanded: Boolean, build: CollapsibleContainer.() -> Unit = {}): CollapsibleContainer =
     Containers.collapsible(Sizing.content(), Sizing.content(), title, expanded).apply(build)
 
 @JvmOverloads inline fun <T : Component> overlay(child: T, build: OverlayContainer<T>.() -> Unit = {}): OverlayContainer<T> =
     Containers.overlay(child).apply(build)
 
-//? if =1.21.8 {
-@JvmOverloads inline fun button(build: ButtonWidgetComponent.() -> Unit = {}): ButtonWidgetComponent =
-    Components.button("".text()) {}.apply(build)
+//? if <26.0 {
+@JvmOverloads inline fun button(build: ButtonComponent.() -> Unit = {}): ButtonComponent =
+    Components.button("".Component()) {}.apply(build)
 
-@JvmOverloads inline fun button(text: Text, build: ButtonWidgetComponent.() -> Unit = {}): ButtonWidgetComponent =
-    Components.button(text) {}.apply(build)
+@JvmOverloads inline fun button(Component: Component, build: ButtonComponent.() -> Unit = {}): ButtonComponent =
+    Components.button(Component) {}.apply(build)
 //?} else {
-@JvmOverloads inline fun button(build: ButtonWidgetComponent.() -> Unit = {}): ButtonWidgetComponent =
-    Components.button("".text()) {}.apply(build)
+@JvmOverloads inline fun button(build: ButtonComponent.() -> Unit = {}): ButtonComponent =
+    Components.button("".Component()) {}.apply(build)
 
-@JvmOverloads inline fun button(text: Text, build: ButtonWidgetComponent.() -> Unit = {}): ButtonWidgetComponent =
-    Components.button(text) {}.apply(build)
+@JvmOverloads inline fun button(Component: Component, build: ButtonComponent.() -> Unit = {}): ButtonComponent =
+    Components.button(Component) {}.apply(build)
 //?}
 
 @JvmOverloads inline fun textBox(build: TextBoxComponent.() -> Unit = {}): TextBoxComponent =
@@ -87,7 +87,7 @@ import net.minecraft.util.Identifier
 @JvmOverloads inline fun <T : Entity> entity(entity: T, build: EntityComponent<T>.() -> Unit = {}): EntityComponent<T> =
     Components.entity(Sizing.content(), entity).apply(build)
 
-@JvmOverloads inline fun <T : Entity> entity(type: EntityType<T>, nbt: NbtCompound?, build: EntityComponent<T>.() -> Unit = {}): EntityComponent<T> =
+@JvmOverloads inline fun <T : Entity> entity(type: EntityType<T>, nbt: CompoundTag?, build: EntityComponent<T>.() -> Unit = {}): EntityComponent<T> =
     Components.entity(Sizing.content(), type, nbt).apply(build)
 
 @JvmOverloads inline fun item(stack: ItemStack, build: ItemComponent.() -> Unit = {}): ItemComponent =
@@ -99,20 +99,20 @@ import net.minecraft.util.Identifier
 @JvmOverloads inline fun block(state: BlockState, blockEntity: BlockEntity, build: BlockComponent.() -> Unit = {}): BlockComponent =
     Components.block(state, blockEntity).apply(build)
 
-@JvmOverloads inline fun block(state: BlockState, nbt: NbtCompound?, build: BlockComponent.() -> Unit = {}): BlockComponent =
+@JvmOverloads inline fun block(state: BlockState, nbt: CompoundTag?, build: BlockComponent.() -> Unit = {}): BlockComponent =
     Components.block(state, nbt).apply(build)
 
 @JvmOverloads inline fun label(build: LabelComponent.() -> Unit = {}): LabelComponent =
-    Components.label("".text()).apply(build)
+    Components.label("".Component()).apply(build)
 
-@JvmOverloads inline fun label(text: Text, build: LabelComponent.() -> Unit = {}): LabelComponent =
-    Components.label(text).apply(build)
+@JvmOverloads inline fun label(Component: Component, build: LabelComponent.() -> Unit = {}): LabelComponent =
+    Components.label(Component).apply(build)
 
-@JvmOverloads inline fun checkbox(text: Text, build: CheckboxComponent.() -> Unit = {}): CheckboxComponent =
-    Components.checkbox(text).apply(build)
+@JvmOverloads inline fun checkbox(Component: Component, build: CheckboxComponent.() -> Unit = {}): CheckboxComponent =
+    Components.checkbox(Component).apply(build)
 
-@JvmOverloads inline fun smallCheckbox(text: Text, build: SmallCheckboxComponent.() -> Unit = {}): SmallCheckboxComponent =
-    Components.smallCheckbox(text).apply(build)
+@JvmOverloads inline fun smallCheckbox(Component: Component, build: SmallCheckboxComponent.() -> Unit = {}): SmallCheckboxComponent =
+    Components.smallCheckbox(Component).apply(build)
 
 @JvmOverloads inline fun slider(build: SliderComponent.() -> Unit = {}): SliderComponent =
     Components.slider(Sizing.content()).apply(build)
@@ -152,3 +152,6 @@ import net.minecraft.util.Identifier
 
 @JvmOverloads inline fun spacer(percent: Int = 100, build: SpacerComponent.() -> Unit = {}): SpacerComponent =
     Components.spacer(percent).apply(build)
+
+
+

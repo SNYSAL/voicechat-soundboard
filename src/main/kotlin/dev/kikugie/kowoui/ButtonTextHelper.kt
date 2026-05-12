@@ -1,12 +1,15 @@
 package dev.kikugie.kowoui
 
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 
-//? if =1.21.8 {
-fun wrapButtonWidgetText(text: Text): Any = text
+//? if <26.0 {
+fun wrapButtonText(Component: Component): Any = Component
 //?} else {
-// For 1.21.11+, ButtonWidgetComponent now expects ButtonWidget.Text
+// For 1.21.11+, ButtonComponent now expects Button.Component
 // We create it by using the message property directly since Components.button() handles it
-fun wrapButtonWidgetText(text: Text): Any = text
+fun wrapButtonText(Component: Component): Any = Component
 //?}
+
+
+
 

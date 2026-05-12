@@ -1,11 +1,11 @@
-﻿@file:Suppress("unused")
+@file:Suppress("unused")
 
 package dev.kikugie.kowoui
 
 import io.wispforest.owo.ui.component.*
 import io.wispforest.owo.ui.container.CollapsibleContainer
 import io.wispforest.owo.ui.core.Color
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.core.Component
 import io.wispforest.owo.ui.core.Component.FocusSource
 //?} else {
@@ -32,7 +32,7 @@ fun <T : TextAreaComponent> T.onChange(action: (String) -> Unit) =
 fun <T : TextBoxComponent> T.onChange(action: (String) -> Unit) =
     this.also { onChanged().subscribe(TextBoxComponent.OnChanged(action)) }
 
-//? if =1.21.8 {
+//? if <26.0 {
 fun <T : Component> T.onCharType(action: (Char, Int) -> Boolean) =
     this.also { charTyped().subscribe(CharTyped(action)) }
 
@@ -121,3 +121,6 @@ fun <T : SliderComponent> T.onSlideEnd(action: () -> Unit) =
 
 fun <T : SlimSliderComponent> T.onSlideEnd(action: () -> Unit) =
     this.also { onSlideEnd().subscribe(SlimSliderComponent.OnSlideEnd(action)) }
+
+
+

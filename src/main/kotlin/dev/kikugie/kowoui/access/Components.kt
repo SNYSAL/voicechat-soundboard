@@ -4,19 +4,19 @@ package dev.kikugie.kowoui.access
 
 import dev.kikugie.kowoui.unsupported
 import io.wispforest.owo.ui.component.*
-import io.wispforest.owo.ui.component.ButtonWidgetComponent.Renderer
-//? if =1.21.8 {
+import io.wispforest.owo.ui.component.ButtonComponent.Renderer
+//? if <26.0 {
 import io.wispforest.owo.ui.core.*
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
 import io.wispforest.owo.ui.core.*
 //?}
-import net.minecraft.client.gui.widget.TextFieldWidget
+import net.minecraft.client.gui.components.EditBox as EditBox
 import org.joml.Matrix4f
-import net.minecraft.entity.Entity
-import net.minecraft.item.ItemStack
-import net.minecraft.text.Style
-import net.minecraft.text.Text
+import net.minecraft.world.entity.Entity
+import net.minecraft.world.item.ItemStack
+import net.minecraft.network.chat.Style
+import net.minecraft.network.chat.Component as Component
 import java.util.function.Consumer
 import java.util.function.Function
 
@@ -112,7 +112,7 @@ var LabelComponent.horizontalTextAlignment: HorizontalAlignment
         horizontalTextAlignment(value)
     }
 
-var SmallCheckboxComponent.label: Text
+var SmallCheckboxComponent.label: Component
     get() = label()
     set(value) {
         label(value)
@@ -154,14 +154,14 @@ var LabelComponent.maxWidth: Int
         maxWidth(value)
     }
 
-var SliderComponent.messageProvider: Function<String, Text>
+var SliderComponent.messageProvider: Function<String, Component>
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {
         message(value)
     }
 
-var ButtonWidgetComponent.renderer: Renderer
+var ButtonComponent.renderer: Renderer
     get() = renderer()
     set(value) {
         renderer(value)
@@ -245,13 +245,13 @@ var SlimSliderComponent.stepSize: Double
         stepSize(value)
     }
 
-var LabelComponent.text: Text
-    get() = text()
+var LabelComponent.Component: Component
+    get() = Component()
     set(value) {
-        text(value)
+        Component(value)
     }
 
-var ButtonWidgetComponent.textShadow: Boolean
+var ButtonComponent.textShadow: Boolean
     get() = textShadow()
     set(value) {
         textShadow(value)
@@ -263,7 +263,7 @@ var ItemComponent.tooltipFromStack: Boolean
         setTooltipFromStack(value)
     }
 
-var SlimSliderComponent.tooltipSupplier: Function<Double, Text>
+var SlimSliderComponent.tooltipSupplier: Function<Double, Component>
     get() = tooltipSupplier()
     set(value) {
         tooltipSupplier(value)
@@ -293,21 +293,21 @@ var TextureComponent.visibleArea: PositionedRectangle
         visibleArea(value)
     }
 
-var TextFieldWidget.placeholder: Text?
+var EditBox.placeholder: Component?
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {
-        setPlaceholder(value)
+        hint = value
     }
 
-var TextFieldWidget.suggestion: String?
+var EditBox.suggestion: String?
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {
-        setSuggestion(value)
+        suggestion = value
     }
 
-var TextFieldWidget.maxLength: Int
+var EditBox.maxLength: Int
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {
@@ -342,3 +342,6 @@ val <T : Entity> EntityComponent<T>.entity
 fun EntityComponent<*>.transformWith(action: Matrix4f.() -> Unit) {
     transform(action)
 }
+
+
+

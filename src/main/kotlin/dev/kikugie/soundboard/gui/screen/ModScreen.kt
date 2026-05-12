@@ -1,4 +1,4 @@
-package dev.kikugie.soundboard.gui.screen
+package dev.kikugie.soundboard.gui.Screen
 
 import dev.kikugie.kowoui.access.*
 import dev.kikugie.kowoui.experimental.plusAssign
@@ -11,7 +11,7 @@ import dev.kikugie.soundboard.gui.widget.SidebarWidget
 import io.wispforest.owo.ui.base.BaseOwoScreen
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.container.StackLayout
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.core.Component
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
@@ -54,3 +54,6 @@ abstract class ModScreen : BaseOwoScreen<StackLayout>() {
     protected open fun setup(container: FlowLayout): Component = container
     protected abstract fun FlowLayout.configure()
 }
+
+
+

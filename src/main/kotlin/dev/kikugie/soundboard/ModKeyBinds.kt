@@ -1,45 +1,48 @@
 package dev.kikugie.soundboard
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
-import net.minecraft.client.gui.screen.Screen
-import net.minecraft.client.option.KeyBinding
-import net.minecraft.client.util.InputUtil
+import net.fabricmc.fabric.api.client.KeyMapping.v1.KeyBindingHelper
+import net.minecraft.client.gui.screens.Screen
+import net.minecraft.client.KeyMapping
+import com.mojang.blaze3d.platform.InputConstants
 
 object ModKeyBinds {
     private val keybinds = mutableMapOf<String, KeyBuilder>()
 
     @JvmStatic
-    operator fun get(name: String): KeyBinding? = keybinds[name]?.keybind
+    operator fun get(name: String): KeyMapping? = keybinds[name]?.keybind
     fun keybind(key: Int, name: String, action: KeyBuilder.() -> Unit) {
-        //? if =1.21.8 {
-        val bind = KeyBindingHelper.registerKeyBinding(KeyBinding("soundboard.keybinds.$name", key, "soundboard.title"))
+        //? if <26.0 {
+        val bind = KeyBindingHelper.registerKeyBinding(KeyMapping("soundboard.keybinds.$name", key, "soundboard.title"))
         //?} else {
-        val bind = KeyBindingHelper.registerKeyBinding(KeyBinding("soundboard.keybinds.$name", InputUtil.Type.KEYSYM, key, KeyBinding.Category.MISC))
+        val bind = KeyBindingHelper.registerKeyBinding(KeyMapping("soundboard.keybinds.$name", InputConstants.Type.KEYSYM, key, "soundboard.title"))
         //?}
         val builder = KeyBuilder(bind).apply(action)
         keybinds[name] = builder
         ClientTickEvents.END_CLIENT_TICK.register {
-            if (bind.wasPressed()) builder.inGame?.invoke()
+            if (bind.consumeClick()) builder.inGame?.invoke()
         }
     }
 
-    internal fun invoke(screen: Screen) = keybinds.values.forEach {
-        it.inGui?.invoke(screen)
+    internal fun invoke(Screen: Screen) = keybinds.values.forEach {
+        it.inGui?.invoke(Screen)
     }
 
     class KeyBuilder(
-        val keybind: KeyBinding,
+        val keybind: KeyMapping,
     ) {
         internal var inGame: (() -> Unit)? = null
         internal var inGui: ((Screen) -> Unit)? = null
 
-        fun inGame(action: (KeyBinding) -> Unit) {
+        fun inGame(action: (KeyMapping) -> Unit) {
             inGame = { action(keybind) }
         }
 
-        fun inGui(action: Screen.(KeyBinding) -> Unit) {
+        fun inGui(action: Screen.(KeyMapping) -> Unit) {
             inGui = { it.action(keybind) }
         }
     }
 }
+
+
+

@@ -1,8 +1,8 @@
 package dev.kikugie.kowoui.mixin.owo;
 
 import io.wispforest.owo.ui.component.LabelComponent;
-import net.minecraft.text.OrderedText;
-import net.minecraft.text.Style;
+import net.minecraft.Component.OrderedText;
+import net.minecraft.Component.Style;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,3 +23,6 @@ public class LabelComponentMixin {
 		if (this.wrappedText.isEmpty()) cir.setReturnValue(Style.EMPTY);
 	}
 }
+
+
+

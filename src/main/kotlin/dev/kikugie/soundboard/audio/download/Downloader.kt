@@ -3,7 +3,7 @@ package dev.kikugie.soundboard.audio.download
 import dev.kikugie.kowoui.access.*
 import dev.kikugie.kowoui.experimental.plusAssign
 import dev.kikugie.kowoui.overlay
-import dev.kikugie.kowoui.text
+import dev.kikugie.kowoui.Component
 import dev.kikugie.kowoui.translation
 import dev.kikugie.kowoui.util.CombinedAlignment
 import dev.kikugie.soundboard.GAME_DIR
@@ -18,8 +18,8 @@ import io.wispforest.owo.ui.core.Surface
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
-import net.minecraft.client.gui.screen.ConfirmScreen
-import net.minecraft.client.gui.screen.Screen
+import net.minecraft.client.gui.Screen.ConfirmScreen
+import net.minecraft.client.gui.screens.Screen
 import java.lang.ref.WeakReference
 import java.net.URI
 import java.nio.file.Path
@@ -63,7 +63,7 @@ object Downloader {
 
                     else -> {
                         LOGGER.error("Failed to download $url", it)
-                        // TODO should open a popup if screen has been closed
+                        // TODO should open a popup if Screen has been closed
                         ref.get()?.createWidget(it) ?: client.player
                             ?.sendMessage(FAILURE.translation(file.invariantSeparatorsPathString), false)
                     }
@@ -74,7 +74,7 @@ object Downloader {
     }
 
     private fun StackLayout.createWidget(error: Throwable) {
-        val message = if (error is TranslatedException) error.text else error.message?.text() ?: "UNKNOWN ERROR".text()
+        val message = if (error is TranslatedException) error.Component else error.message?.Component() ?: "UNKNOWN ERROR".Component()
         this += overlay(DownloadErrorWidget(message)) {
             sizing = Sizing.fill(80)
             positioning = Positioning.relative(50, 50)
@@ -84,3 +84,6 @@ object Downloader {
         }
     }
 }
+
+
+

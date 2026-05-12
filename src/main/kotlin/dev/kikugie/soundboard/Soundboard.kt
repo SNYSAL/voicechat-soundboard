@@ -2,12 +2,12 @@ package dev.kikugie.soundboard
 
 import dev.kikugie.soundboard.audio.BASE_DIR
 import dev.kikugie.soundboard.audio.data.SoundEntry
-import dev.kikugie.soundboard.audio.registry.ResourceAudioHolder
-import dev.kikugie.soundboard.audio.registry.SoundRegistry
+import dev.kikugie.soundboard.audio.Registry.ResourceAudioHolder
+import dev.kikugie.soundboard.audio.Registry.SoundRegistry
 import dev.kikugie.soundboard.config.AudioConfig
 import dev.kikugie.soundboard.config.SoundboardConfig
 import dev.kikugie.soundboard.entrypoint.SoundboardAccess
-import dev.kikugie.soundboard.gui.screen.SoundBrowser
+import dev.kikugie.soundboard.gui.Screen.SoundBrowser
 import dev.kikugie.soundboard.util.client
 import dev.kikugie.soundboard.util.idOf
 import dev.kikugie.soundboard.util.shiftDown
@@ -15,7 +15,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType
 import net.fabricmc.loader.api.FabricLoader
-import net.minecraft.client.util.InputUtil
+import com.mojang.blaze3d.platform.InputConstants
 import net.minecraft.resource.ResourceType
 import org.lwjgl.glfw.GLFW
 import kotlin.io.path.createDirectories
@@ -51,7 +51,7 @@ object Soundboard {
             val numrow = GLFW.GLFW_KEY_1..GLFW.GLFW_KEY_9
             val numpad = GLFW.GLFW_KEY_KP_1..GLFW.GLFW_KEY_KP_9
             fun get(): SoundEntry? {
-                //? if =1.21.8 {
+                //? if <26.0 {
                 val window = client.window.handle
                 //?} else {
                 val window = client.window
@@ -59,13 +59,13 @@ object Soundboard {
                 // 0 to 9
                 val index = when {
                     // 0 converts to 9 because it's the last on the number row
-                    InputUtil.isKeyPressed(window, GLFW.GLFW_KEY_0) ||
-                    InputUtil.isKeyPressed(window, GLFW.GLFW_KEY_KP_0) -> 9
+                    InputConstants.isKeyDown(window, GLFW.GLFW_KEY_0) ||
+                    InputConstants.isKeyDown(window, GLFW.GLFW_KEY_KP_0) -> 9
 
                     else -> numrow.firstNotNullOfOrNull {
-                        if (InputUtil.isKeyPressed(window, it)) it - GLFW.GLFW_KEY_1 else null
+                        if (InputConstants.isKeyDown(window, it)) it - GLFW.GLFW_KEY_1 else null
                     } ?: numpad.firstNotNullOfOrNull {
-                        if (InputUtil.isKeyPressed(window, it)) it - GLFW.GLFW_KEY_KP_1 else null
+                        if (InputConstants.isKeyDown(window, it)) it - GLFW.GLFW_KEY_KP_1 else null
                     } ?: return null
                 }
                 if (index >= favourites.size) return null
@@ -73,10 +73,10 @@ object Soundboard {
                 return SoundRegistry.favourites[favourites[index]]
             }
             ClientTickEvents.END_CLIENT_TICK.register {
-                if (keybind.isPressed && favourites.isNotEmpty()) get()?.run {
+                if (keybind.isDown && favourites.isNotEmpty()) get()?.run {
                     println("Playing ${id.str}")
                     SoundboardAccess.active?.schedule(this, shiftDown)
-                    keybind.isPressed = false
+                    keybind.isDown = false
                 }
             }
         }
@@ -88,3 +88,6 @@ object Soundboard {
         )
     }
 }
+
+
+

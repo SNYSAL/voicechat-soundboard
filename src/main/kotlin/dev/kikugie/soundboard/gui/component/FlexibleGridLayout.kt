@@ -1,7 +1,7 @@
 package dev.kikugie.soundboard.gui.component
 
 import io.wispforest.owo.ui.container.GridLayout
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.core.Component
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
@@ -17,7 +17,7 @@ class FlexibleGridLayout(rows: Int, columns: Int) : GridLayout(Sizing.fill(), Si
 
     override fun childMountingOffset(): Size {
         combine(rows, columns) { row, column ->
-            //? if =1.21.8 {
+            //? if <26.0 {
             getChild(row, column)?.inflate(Size.of(columnSizes[column], rowSizes[row]))
             //?} else {
             getChild(row, column)?.let { it.inflate(Size.of(columnSizes[column], rowSizes[row])) }
@@ -69,3 +69,6 @@ class FlexibleGridLayout(rows: Int, columns: Int) : GridLayout(Sizing.fill(), Si
         for (i in 0..<w) for (j in 0..<h) action(i, j)
     }
 }
+
+
+

@@ -3,7 +3,7 @@ package dev.kikugie.soundboard.gui.widget
 import dev.kikugie.kowoui.*
 import dev.kikugie.kowoui.access.*
 import dev.kikugie.kowoui.dynamic.ColoredTextComponent
-import dev.kikugie.kowoui.dynamic.dynamicButtonWidget
+import dev.kikugie.kowoui.dynamic.dynamicButton
 import dev.kikugie.kowoui.dynamic.dynamicLabel
 import dev.kikugie.kowoui.dynamic.fixedSpacer
 import dev.kikugie.kowoui.experimental.at
@@ -13,23 +13,23 @@ import dev.kikugie.soundboard.ModKeyBinds
 import dev.kikugie.soundboard.Soundboard
 import dev.kikugie.soundboard.audio.data.AudioConfiguration.Companion.DEFAULT
 import dev.kikugie.soundboard.audio.data.SoundEntry
-import dev.kikugie.soundboard.audio.registry.SoundRegistry
+import dev.kikugie.soundboard.audio.Registry.SoundRegistry
 import dev.kikugie.soundboard.config.AudioConfig
 import dev.kikugie.soundboard.entrypoint.SoundboardEntrypoint
 import dev.kikugie.soundboard.gui.component.*
 import dev.kikugie.soundboard.gui.component.TimeInputComponent.Companion.asString
-import dev.kikugie.soundboard.gui.screen.SoundBrowser
+import dev.kikugie.soundboard.gui.Screen.SoundBrowser
 import dev.kikugie.soundboard.util.client
 import dev.kikugie.soundboard.util.currentScreen
 import dev.kikugie.soundboard.util.duration
 import dev.kikugie.soundboard.util.read
-import io.wispforest.owo.ui.component.ButtonWidgetComponent.Renderer
+import io.wispforest.owo.ui.component.ButtonComponent.Renderer
 import io.wispforest.owo.ui.component.SlimSliderComponent.Axis.VERTICAL
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.core.*
 import io.wispforest.owo.ui.core.Insets.bottom
 import io.wispforest.owo.ui.core.Sizing.*
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 import kotlin.time.Duration
 
 class SoundSettingsWidget(
@@ -40,15 +40,15 @@ class SoundSettingsWidget(
         private const val CLOSE = "×"
         private const val CLOSE_TOOLTIP = "soundboard.browser.tooltip.close"
         private const val PLAY_TOOLTIP = "soundboard.browser.tooltip.play"
-        private val STAR_LABEL: (Boolean) -> Text = {
-            if (it) "★".text() else "☆".text()
+        private val STAR_LABEL: (Boolean) -> Component = {
+            if (it) "★".Component() else "☆".Component()
         }
-        private val FAVOURITE_TOOLTIP: (Boolean) -> Text = {
+        private val FAVOURITE_TOOLTIP: (Boolean) -> Component = {
             if (it) "soundboard.browser.tooltip.unfavourite".translation()
             else "soundboard.browser.tooltip.favourite".translation()
         }
-        private val PLAY_LABEL: (Boolean) -> Text = {
-            if (it) "■".text() else "▶".text()
+        private val PLAY_LABEL: (Boolean) -> Component = {
+            if (it) "■".Component() else "▶".Component()
         }
     }
 
@@ -90,29 +90,29 @@ class SoundSettingsWidget(
             this += object : ColoredTextComponent() {
                 init {
                     id = "index"
-                    text = "-1"
+                    Component = "-1"
                     verticalSizing = fixed(8)
                     horizontalSizing = fixed(client.textRenderer.getWidth("00"))
                     drawBackground = false
                     onChange {
-                        if (isValid(text)) index = it.trim().toInt()
+                        if (isValid(Component)) index = it.trim().toInt()
                     }
                     color {
-                        if (!isValid(text)) Color.RED else null
+                        if (!isValid(Component)) Color.RED else null
                     }
                 }
 
-                override fun setText(text: String) {
-                    super.setText(text.trim().take(2).padStart(2))
+                override fun setText(Component: String) {
+                    super.setValue(Component.trim().take(2).padStart(2))
                 }
 
-                override fun write(text: String) {
-                    super.write(text)
-                    setText(this.text)
+                override fun write(Component: String) {
+                    super.write(Component)
+                    setText(this.Component)
                 }
 
-                private fun isValid(text: String) =
-                    text.trim().toIntOrNull()?.takeIf { it in -1..<CONFIG.favourites.size } != null
+                private fun isValid(Component: String) =
+                    Component.trim().toIntOrNull()?.takeIf { it in -1..<CONFIG.favourites.size } != null
             }
             this += button(STAR_LABEL(favourite)) {
                 id = "favourite"
@@ -133,7 +133,7 @@ class SoundSettingsWidget(
                     (currentScreen as? SoundBrowser)?.createFavourites()
                 }
             }
-            this += button(CLOSE.text()) {
+            this += button(CLOSE.Component()) {
                 id = "close"
                 sizing = fixed(8)
                 renderer = Renderer.flat(0, 0, 0)
@@ -165,7 +165,7 @@ class SoundSettingsWidget(
                     waveform.mult = mod
                 }
                 tooltipSupplier {
-                    "${(settings.volume * 100).toInt()}%".text()
+                    "${(settings.volume * 100).toInt()}%".Component()
                 }
             }
             at(1, 0) += grid(1, 5) {
@@ -183,7 +183,7 @@ class SoundSettingsWidget(
                     id = "duration"
                     horizontalTextAlignment = HorizontalAlignment.CENTER
                     verticalTextAlignment = VerticalAlignment.CENTER
-                    text { "${(settings.end - settings.start).asString}s".text() }
+                    Component { "${(settings.end - settings.start).asString}s".Component() }
                 }
                 at(0, 3) += fixedSpacer(5)
                 at(0, 4) += TimeInputComponent(duration, settings::end).apply {
@@ -192,11 +192,11 @@ class SoundSettingsWidget(
                     onDurationChange { cutter.update() }
                 }
             }
-            at(1, 1) += dynamicButtonWidget {
+            at(1, 1) += dynamicButton {
                 id = "play"
                 horizontalSizing = fixed(20)
                 tooltipText = PLAY_TOOLTIP.translation(ModKeyBinds["browser"]!!.boundKeyLocalizedText.string)
-                text { PLAY_LABEL(access.scheduler.playing) }
+                Component { PLAY_LABEL(access.scheduler.playing) }
                 onPress {
                     if (access.scheduler.playing) access.scheduler.reset()
                     else {
@@ -208,4 +208,7 @@ class SoundSettingsWidget(
         }
     }
 }
+
+
+
 

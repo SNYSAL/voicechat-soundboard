@@ -2,32 +2,32 @@ package dev.kikugie.soundboard.gui.component
 
 import dev.kikugie.soundboard.util.drawScrollingText
 import dev.kikugie.kowoui.text
-//? if =1.21.8 {
-import io.wispforest.owo.mixin.ui.access.ClickableWidgetAccessor
+//? if <26.0 {
+import io.wispforest.owo.mixin.ui.access.AbstractWidgetAccessor
 import io.wispforest.owo.ui.core.OwoUIDrawContext
 //?} else {
-import io.wispforest.owo.mixin.ui.access.ButtonWidgetAccessor
+import io.wispforest.owo.mixin.ui.access.ButtonAccessor
 import io.wispforest.owo.ui.core.OwoUIGraphics as OwoUIDrawContext
 //?}
-import io.wispforest.owo.ui.component.ButtonWidgetComponent
-import net.minecraft.class_310Client
-import net.minecraft.client.gui.DrawContext
+import io.wispforest.owo.ui.component.ButtonComponent
+import net.minecraft.client.Minecraft
+import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.gui.tooltip.HoveredTooltipPositioner
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 import java.util.function.Consumer
 
-//? if =1.21.8 {
-class ScrollingButtonWidgetComponent(message: Text, onPress: Consumer<ButtonWidgetComponent>?) : ButtonWidgetComponent(message, onPress) {
+//? if <26.0 {
+class ScrollingButtonComponent(message: Component, onPress: Consumer<ButtonComponent>?) : ButtonComponent(message, onPress) {
 //?} else {
-class ScrollingButtonWidgetComponent(message: Text, onPress: Consumer<ButtonWidgetComponent>?) : ButtonWidgetComponent(message, onPress) {
+class ScrollingButtonComponent(message: Component, onPress: Consumer<ButtonComponent>?) : ButtonComponent(message, onPress) {
 //?}
     private val margins get() = margins().get()
 
-    //? if =1.21.8 {
-    override fun renderWidget(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
+    //? if <26.0 {
+    override fun renderWidget(context: GuiGraphics, mouseX: Int, mouseY: Int, delta: Float) {
         renderer.draw(context as OwoUIDrawContext, this, delta)
 
-        val textRenderer = MinecraftClient.getInstance().textRenderer
+        val textRenderer = Minecraft.getInstance().font
         val color = if (this.active) 0xFFFFFF else 0xA0A0A0
 
         context.drawScrollingText(
@@ -41,16 +41,19 @@ class ScrollingButtonWidgetComponent(message: Text, onPress: Consumer<ButtonWidg
             color,
             textShadow
         )
-        val tooltip = (this as ClickableWidgetAccessor).`owo$getTooltip`()
-        if (this.hovered && tooltip.tooltip != null) context.drawTooltip(
+        val tooltip = (this as AbstractWidgetAccessor).`owo$getTooltip`()
+        if (this.hovered && tooltip.tooltip != null) context.renderTooltip(
             textRenderer, tooltip.tooltip!!
-                .getLines(MinecraftClient.getInstance()), HoveredTooltipPositioner.INSTANCE, mouseX, mouseY, this.isFocused
+                .toLines(Minecraft.getInstance()), HoveredTooltipPositioner.INSTANCE, mouseX, mouseY
         )
     }
     //?} else {
     // In 1.21.11, renderWidget is final - we use composition instead
-    override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
-        super.render(context, mouseX, mouseY, delta)
+    override fun renderWidget(context: GuiGraphics, mouseX: Int, mouseY: Int, delta: Float) {
+        super.renderWidget(context, mouseX, mouseY, delta)
     }
     //?}
 }
+
+
+

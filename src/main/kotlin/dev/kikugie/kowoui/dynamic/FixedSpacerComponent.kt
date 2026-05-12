@@ -1,7 +1,7 @@
 package dev.kikugie.kowoui.dynamic
 
 import dev.kikugie.kowoui.access.sizing
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.base.BaseComponent
 import io.wispforest.owo.ui.core.OwoUIDrawContext
 //?} else {
@@ -18,3 +18,6 @@ class FixedSpacerComponent(pixels: Int) : BaseComponent() {
     override fun draw(context: OwoUIDrawContext?, mouseX: Int, mouseY: Int, partialTicks: Float, delta: Float) {
     }
 }
+
+
+

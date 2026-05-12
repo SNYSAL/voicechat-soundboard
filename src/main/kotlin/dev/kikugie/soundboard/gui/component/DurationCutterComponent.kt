@@ -3,7 +3,7 @@ package dev.kikugie.soundboard.gui.component
 import dev.kikugie.soundboard.util.Property
 import dev.kikugie.soundboard.util.drawLinePrecise
 import dev.kikugie.soundboard.util.idOf
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.base.BaseComponent
 import io.wispforest.owo.ui.base.BaseParentComponent
 import io.wispforest.owo.ui.core.*
@@ -106,7 +106,7 @@ class DurationCutterComponent(
 
         override fun determineHorizontalContentSize(sizing: Sizing?): Int = 3
 
-        //? if =1.21.8 {
+        //? if <26.0 {
         override fun onMouseDrag(mouseX: Double, mouseY: Double, deltaX: Double, deltaY: Double, button: Int): Boolean {
             super.onMouseDrag(mouseX, mouseY, deltaX, deltaY, button)
             if (invalidDrag || !isValid(mouseX - deltaX + x)) invalidDrag = true
@@ -155,3 +155,6 @@ class DurationCutterComponent(
         const val TEXTURE_SIZE = 16
     }
 }
+
+
+

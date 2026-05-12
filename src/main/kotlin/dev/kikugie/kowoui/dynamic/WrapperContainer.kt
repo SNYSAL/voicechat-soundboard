@@ -1,6 +1,6 @@
 package dev.kikugie.kowoui.dynamic
 
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.container.WrappingParentComponent
 import io.wispforest.owo.ui.core.Component
 import io.wispforest.owo.ui.core.OwoUIDrawContext
@@ -17,3 +17,6 @@ class WrapperContainer<T : Component>(child: T) : WrappingParentComponent<T>(con
         drawChildren(context, mouseX, mouseY, partialTicks, delta, children())
     }
 }
+
+
+

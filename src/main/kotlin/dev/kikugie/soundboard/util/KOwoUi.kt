@@ -1,6 +1,6 @@
 package dev.kikugie.soundboard.util
 
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.core.Component
 import io.wispforest.owo.ui.core.ParentComponent
 import io.wispforest.owo.ui.core.OwoUIDrawContext
@@ -13,9 +13,9 @@ import io.wispforest.owo.ui.inject.GreedyInputUIComponent as GreedyInputComponen
 //?}
 import io.wispforest.owo.ui.core.Color
 import net.minecraft.client.font.TextRenderer
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 import net.minecraft.util.Util
-import net.minecraft.util.math.MathHelper
+import net.minecraft.util.Mth
 import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sin
@@ -36,7 +36,7 @@ fun OwoUIDrawContext.drawLinePrecise(x1: Double, y1: Double, x2: Double, y2: Dou
 
 fun OwoUIDrawContext.drawScrollingText(
     textRenderer: TextRenderer,
-    text: Text,
+    Component: Component,
     centerX: Int,
     startX: Int,
     startY: Int,
@@ -45,20 +45,23 @@ fun OwoUIDrawContext.drawScrollingText(
     color: Int,
     textShadow: Boolean
 ) {
-    val textWidth = textRenderer.getWidth(text)
+    val textWidth = textRenderer.getWidth(Component)
     val j = (startY + endY - 9) / 2 + 1
     val buttonWidth = endX - startX
     if (textWidth <= buttonWidth)
-        drawText(textRenderer, text, centerX - textWidth / 2, j, color, textShadow)
+        drawText(textRenderer, Component, centerX - textWidth / 2, j, color, textShadow)
     else {
         val l = textWidth - buttonWidth
         val d = Util.getMeasuringTimeMs().toDouble() / 1000.0
         val e = max(l.toDouble() * 0.5, 3.0)
         val f = sin((Math.PI / 2) * cos((Math.PI * 2) * d / e)) / 2.0 + 0.5
-        val g = MathHelper.lerp(f, 0.0, l.toDouble())
+        val g = Mth.lerp(f, 0.0, l.toDouble())
         enableScissor(startX, startY, endX, endY)
-        drawText(textRenderer, text, startX - g.toInt(), j, color, textShadow)
+        drawText(textRenderer, Component, startX - g.toInt(), j, color, textShadow)
         disableScissor()
     }
 }
+
+
+
 

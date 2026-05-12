@@ -3,14 +3,14 @@ package dev.kikugie.soundboard.gui.component
 import dev.kikugie.soundboard.util.client
 import dev.kikugie.soundboard.util.drawScrollingText
 import io.wispforest.owo.ui.component.LabelComponent
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.core.OwoUIDrawContext
 //?} else {
 import io.wispforest.owo.ui.core.OwoUIGraphics as OwoUIDrawContext
 //?}
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 
-class ScrollingLabelComponent(text: Text = Text.empty()) : LabelComponent(text) {
+class ScrollingLabelComponent(Component: Component = Component.empty()) : LabelComponent(Component) {
     private var center: (Int) -> Int = { x + width / 2 }
     fun center(func:  (Int) -> Int) {
         center = func
@@ -22,8 +22,8 @@ class ScrollingLabelComponent(text: Text = Text.empty()) : LabelComponent(text) 
         matrices.translate(0F, (1.0 / client.window.scaleFactor).toFloat())
         context.drawScrollingText(
             textRenderer,
-            text,
-            center(textRenderer.getWidth(text)),
+            Component,
+            center(textRenderer.getWidth(Component)),
             x + margins.get().left,
             y + margins.get().top,
             x + width - margins.get().right,
@@ -34,4 +34,7 @@ class ScrollingLabelComponent(text: Text = Text.empty()) : LabelComponent(text) 
         matrices.popMatrix()
     }
 }
+
+
+
 

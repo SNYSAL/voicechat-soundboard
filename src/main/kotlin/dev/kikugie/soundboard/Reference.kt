@@ -10,3 +10,6 @@ val LOGGER: Logger = LoggerFactory.getLogger("Soundboard")
 val CONFIG get() = Soundboard.config
 
 val GAME_DIR = FabricLoader.getInstance().gameDir
+
+
+

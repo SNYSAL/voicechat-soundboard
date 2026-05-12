@@ -12,10 +12,6 @@ stonecutter parameters {
     dependencies["fapi"] = node.project.property("deps.fabric_api") as String
 
     replacements {
-        // 26.1+ uses Mojang Mappings → AW header must declare 'official' instead of 'named'.
-        // Source-level mappings differences (Identifier ↔ ResourceLocation, package renames)
-        // are handled per-file with Stonecutter `//?` comment syntax — never blanket-replaced
-        // here, as that would corrupt the canonical source tree.
         string(current.parsed >= "26.1") {
             replace("accessWidener v2 named", "accessWidener v2 official")
         }

@@ -33,7 +33,7 @@ mod.mc_compat = "1.21.8"
 mod.mc_releases = ["1.21.8"]
 
 deps.fabric_api = "0.136.1+1.21.8"
-deps.yarn_mappings = "1.21.8+build.1"
+deps.yarn_mappings = ""
 deps.owo_lib = "0.12.23+1.21.8"
 deps.owo_dep = "~0.12"
 deps.svc_mod = "fabric-1.21.8-2.6.17"

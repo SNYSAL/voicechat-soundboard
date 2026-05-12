@@ -4,14 +4,14 @@ package dev.kikugie.kowoui.access
 
 import dev.kikugie.kowoui.unsupported
 import io.wispforest.owo.ui.core.*
-//? if =1.21.8 {
+//? if <26.0 {
 //?} else {
 import io.wispforest.owo.ui.core.UIComponent as Component
 import io.wispforest.owo.ui.core.ParentUIComponent as ParentComponent
 //?}
 import io.wispforest.owo.ui.util.FocusHandler
 import net.minecraft.client.gui.tooltip.TooltipComponent
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 
 var Component.cursorStyle: CursorStyle
     get() = cursorStyle()
@@ -56,14 +56,14 @@ var Component.tooltip: List<TooltipComponent>?
         tooltip(value)
     }
 
-var Component.tooltipText: Text
+var Component.tooltipText: Component
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {
         tooltip(value)
     }
 
-var Component.tooltipTexts: Collection<Text>
+var Component.tooltipTexts: Collection<Component>
     @Deprecated("Getter unavailable", level = DeprecationLevel.ERROR)
     get() = unsupported { "Getter unavailable" }
     set(value) {
@@ -76,7 +76,7 @@ var Component.verticalSizing: Sizing
         verticalSizing(value)
     }
 
-//? if =1.21.8 {
+//? if <26.0 {
 var Component.zIndex: Int
     get() = zIndex()
     set(value) {
@@ -106,7 +106,7 @@ val Component.parent: ParentComponent?
 val Component.root: ParentComponent?
     get() = root()
 
-//? if =1.21.8 {
+//? if <26.0 {
 val Component.x: Int
     get() = x()
 val Component.y: Int
@@ -125,4 +125,7 @@ val Component.width: Int
 val Component.height: Int
     get() = height()
 //?}
+
+
+
 

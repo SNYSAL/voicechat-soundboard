@@ -44,11 +44,13 @@ repositories {
 dependencies {
     minecraft("com.mojang:minecraft:${sc.current.version}")
     // 26.1+ has no Yarn mappings yet — fall back to Mojang Mappings on those targets.
-    if (prop("deps.yarn_mappings").isNotBlank()) {
-        mappings("net.fabricmc:yarn:${prop("deps.yarn_mappings")}:v2")
-    } else {
+    // if (prop("deps.yarn_mappings").isNotBlank()) {
+    //    mappings("net.fabricmc:yarn:${prop("deps.yarn_mappings")}:v2")
+    // } else {
         loomx.applyMojangMappings()
-    }
+    // }
+
+    println("[DEBUG_LOG] Mappings for ${sc.current.version}: ${if (prop("deps.yarn_mappings").isBlank()) "Mojang" else "Yarn"}")
 
     modImplementation("net.fabricmc:fabric-loader:${prop("deps.fabric_loader")}")
     modImplementation("net.fabricmc:fabric-language-kotlin:${prop("deps.fabric_language_kotlin")}")

@@ -5,7 +5,7 @@ package dev.kikugie.kowoui.experimental
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.container.GridLayout
 import io.wispforest.owo.ui.container.StackLayout
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.core.Component
 import io.wispforest.owo.ui.core.ParentComponent
 //?} else {
@@ -62,3 +62,6 @@ class GridLayoutSetter(private val row: Int, private val column: Int, private va
         layout.child(component, row, column)
     }
 }
+
+
+

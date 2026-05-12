@@ -1,4 +1,4 @@
-package dev.kikugie.soundboard.audio.registry
+package dev.kikugie.soundboard.audio.Registry
 
 import net.minecraft.resource.Resource
 import java.nio.file.Path
@@ -30,3 +30,6 @@ object PropertiesReader {
 
     private fun String.unquote() = trim().trim('"', '\'')
 }
+
+
+

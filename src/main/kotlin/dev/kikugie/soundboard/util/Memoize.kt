@@ -9,3 +9,6 @@ abstract class Memoizer<T, R>(private val cache: MutableMap<T, R>) : (T) -> R {
     abstract fun supply(t: T): R
     override fun invoke(t: T): R = cache.computeIfAbsent(t, ::supply)
 }
+
+
+

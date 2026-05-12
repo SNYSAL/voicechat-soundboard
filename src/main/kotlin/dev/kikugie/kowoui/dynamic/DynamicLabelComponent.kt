@@ -2,21 +2,21 @@ package dev.kikugie.kowoui.dynamic
 
 import dev.kikugie.kowoui.cached
 import io.wispforest.owo.ui.component.LabelComponent
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.core.OwoUIDrawContext
 //?} else {
 import io.wispforest.owo.ui.core.OwoUIGraphics as OwoUIDrawContext
 //?}
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 
-class DynamicLabelComponent(initial: Text) : LabelComponent(initial) {
-    private var provider: (() -> Text)? = null
-    private var cache: Text by cached(initial) {
-        text = it
+class DynamicLabelComponent(initial: Component) : LabelComponent(initial) {
+    private var provider: (() -> Component)? = null
+    private var cache: Component by cached(initial) {
+        Component = it
         wrappedText = listOf(it.asOrderedText())
     }
 
-    fun text(provider: () -> Text) = apply {
+    fun Component(provider: () -> Component) = apply {
         this.provider = provider
     }
 
@@ -25,3 +25,6 @@ class DynamicLabelComponent(initial: Text) : LabelComponent(initial) {
         super.draw(context, mouseX, mouseY, partialTicks, delta)
     }
 }
+
+
+

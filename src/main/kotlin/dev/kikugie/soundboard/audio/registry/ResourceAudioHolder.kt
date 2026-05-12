@@ -1,4 +1,4 @@
-package dev.kikugie.soundboard.audio.registry
+package dev.kikugie.soundboard.audio.Registry
 
 import dev.kikugie.soundboard.MOD_ID
 import dev.kikugie.soundboard.audio.*
@@ -10,7 +10,7 @@ import dev.kikugie.soundboard.util.idOf
 import net.fabricmc.fabric.api.resource.SimpleResourceReloadListener
 import net.minecraft.resource.Resource
 import net.minecraft.resource.ResourceManager
-import net.minecraft.util.Identifier
+import net.minecraft.resources.ResourceLocation
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.CompletableFuture.allOf
 import java.util.concurrent.Executor
@@ -67,3 +67,6 @@ object ResourceAudioHolder : SimpleResourceReloadListener<GroupMap> {
         return SoundEntry(SoundId(path), file::getInputStream, settings = configuration)
     }
 }
+
+
+

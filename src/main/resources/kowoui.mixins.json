@@ -3,7 +3,7 @@
   "package": "dev.kikugie.kowoui.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "TextFieldWidgetMixin",
+    "EditBoxMixin",
     "owo.BaseParentComponentMixin",
     "owo.LabelComponentMixin"
   ],

@@ -66,3 +66,6 @@ object PlasmoEntrypoint : SoundboardEntrypoint, AddonInitializer, ClientModIniti
             .coerceIn(Short.MIN_VALUE.toInt(), Short.MAX_VALUE.toInt()).toShort()
     }
 }
+
+
+

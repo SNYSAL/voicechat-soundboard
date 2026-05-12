@@ -1,4 +1,4 @@
-package dev.kikugie.soundboard.gui.screen
+package dev.kikugie.soundboard.gui.Screen
 
 import dev.kikugie.kowoui.*
 import dev.kikugie.kowoui.access.*
@@ -11,10 +11,10 @@ import dev.kikugie.soundboard.CONFIG
 import dev.kikugie.soundboard.audio.data.SoundEntry
 import dev.kikugie.soundboard.audio.data.SoundGroup
 import dev.kikugie.soundboard.audio.data.SoundId
-import dev.kikugie.soundboard.audio.registry.SoundRegistry
+import dev.kikugie.soundboard.audio.Registry.SoundRegistry
 import dev.kikugie.soundboard.entrypoint.SoundboardAccess
 import dev.kikugie.soundboard.gui.CONFIG_PANEL
-import dev.kikugie.soundboard.gui.component.ScrollingButtonWidgetComponent
+import dev.kikugie.soundboard.gui.component.ScrollingButtonComponent
 import dev.kikugie.soundboard.gui.widget.SoundSettingsWidget
 import dev.kikugie.soundboard.mixin.owo_ui.ScrollContainerAccessor
 import dev.kikugie.soundboard.util.ctrlDown
@@ -26,7 +26,7 @@ import io.wispforest.owo.ui.container.GridLayout
 import io.wispforest.owo.ui.container.ScrollContainer.Scrollbar.vanilla
 import io.wispforest.owo.ui.container.StackLayout
 import io.wispforest.owo.ui.core.Insets.*
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.core.ParentComponent
 //?} else {
 import io.wispforest.owo.ui.core.ParentUIComponent as ParentComponent
@@ -35,7 +35,7 @@ import io.wispforest.owo.ui.core.Positioning.relative
 import io.wispforest.owo.ui.core.Sizing.expand
 import io.wispforest.owo.ui.core.Sizing.fill
 import io.wispforest.owo.ui.core.Surface
-import net.minecraft.text.Text
+import net.minecraft.network.chat.Component
 import java.nio.file.Path
 import kotlin.math.ceil
 
@@ -97,7 +97,7 @@ class SoundBrowser : ModScreen() {
         this += groups
     }
 
-    private fun group(expanded: Boolean, entries: Int, title: Text) = collapsible(title, expanded) {
+    private fun group(expanded: Boolean, entries: Int, title: Component) = collapsible(title, expanded) {
         id = "group"
         val columns = CONFIG.columns
         val rows = ceil(entries / columns.toFloat()).toInt()
@@ -117,7 +117,7 @@ class SoundBrowser : ModScreen() {
         if (entries.isEmpty() && !keepEmpty) return@with null
         val location = category.id.path(false)
         val buttons = entries.values.map {
-            ScrollingButtonWidgetComponent(it.title) {}.apply {
+            ScrollingButtonComponent(it.title) {}.apply {
                 margins = of(3)
                 horizontalSizing = fill(33)
                 tooltipText = FILE_TOOLTIP.translation()
@@ -133,11 +133,11 @@ class SoundBrowser : ModScreen() {
 
     private fun SoundGroup.container(
         location: Path?,
-        buttons: List<ScrollingButtonWidgetComponent>
+        buttons: List<ScrollingButtonComponent>
     ) = group(id !in collapsed, entries.size, title).apply {
         val soundId = this@container.id
         child().apply {
-            //? if =1.21.8 {
+            //? if <26.0 {
             onToggle { if (it) collapsed -= soundId else collapsed += soundId }
             //?} else {
             onToggle { expanded -> 
@@ -170,3 +170,6 @@ class SoundBrowser : ModScreen() {
         }
     }
 }
+
+
+

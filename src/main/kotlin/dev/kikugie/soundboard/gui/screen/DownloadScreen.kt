@@ -1,4 +1,4 @@
-package dev.kikugie.soundboard.gui.screen
+package dev.kikugie.soundboard.gui.Screen
 
 import dev.kikugie.kowoui.*
 import dev.kikugie.kowoui.access.*
@@ -11,7 +11,7 @@ import dev.kikugie.soundboard.audio.FORMAT
 import dev.kikugie.soundboard.audio.download.Downloader
 import dev.kikugie.soundboard.util.resolveOrNull
 import dev.kikugie.soundboard.util.then
-import io.wispforest.owo.ui.component.ButtonWidgetComponent
+import io.wispforest.owo.ui.component.ButtonComponent
 import io.wispforest.owo.ui.component.TextBoxComponent
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.container.StackLayout
@@ -21,7 +21,7 @@ import io.wispforest.owo.ui.core.Insets.of
 import io.wispforest.owo.ui.core.Sizing.*
 import io.wispforest.owo.ui.core.Surface
 import io.wispforest.owo.ui.core.VerticalAlignment
-import net.minecraft.client.gui.screen.ConfirmLinkScreen
+import net.minecraft.client.gui.Screen.ConfirmLinkScreen
 import net.minecraft.util.DyeColor
 import org.lwjgl.glfw.GLFW
 import java.lang.ref.WeakReference
@@ -114,18 +114,18 @@ class DownloadScreen : ModScreen() {
                 horizontalSizing = expand()
                 verticalSizing = fixed(12)
             }
-            this += button(">>".text()) {
+            this += button(">>".Component()) {
                 id = "download"
                 sizing = fixed(12)
                 tooltipText = DOWNLOAD.translation()
-                renderer = ButtonWidgetComponent.Renderer.flat(0, 0, 0)
+                renderer = ButtonComponent.Renderer.flat(0, 0, 0)
             }
         }
 
         this += fixedSpacer(4)
         this += label(FOOTER.translation()) {
             horizontalSizing = fill()
-            cursorStyle = CursorStyle.HAND
+            cursorStyle = CursorStyle.InteractionHand
             onMouseDown { _, _, _ ->
                 ConfirmLinkScreen.open(this@DownloadScreen, "https://cobalt.tools/")
                 true
@@ -141,7 +141,7 @@ class DownloadScreen : ModScreen() {
         url.onKeyPress { key, _, _ ->
             (key == GLFW.GLFW_KEY_ENTER) then { download(path, url) }
         }
-        childById<ButtonWidgetComponent>("download")!!.onPress {
+        childById<ButtonComponent>("download")!!.onPress {
             download(path, url)
         }
     }
@@ -150,10 +150,13 @@ class DownloadScreen : ModScreen() {
         path: TextBoxComponent,
         url: TextBoxComponent
     ) {
-        val dest = path.text.resolvePath() ?: return
-        val uri = runCatching { URI.create(url.text) }.getOrNull() ?: return
+        val dest = path.Component.resolvePath() ?: return
+        val uri = runCatching { URI.create(url.Component) }.getOrNull() ?: return
         Downloader.download(uri, dest, WeakReference(this@DownloadScreen.root))
     }
 
     private fun String.resolvePath() = BASE_DIR.resolveOrNull("${removePrefix(".$FORMAT")}.wav")
 }
+
+
+

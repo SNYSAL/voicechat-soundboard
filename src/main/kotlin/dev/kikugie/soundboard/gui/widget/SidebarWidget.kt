@@ -7,15 +7,15 @@ import dev.kikugie.kowoui.access.tooltipText
 import dev.kikugie.kowoui.button
 import dev.kikugie.kowoui.experimental.plusAssign
 import dev.kikugie.kowoui.translation
-import dev.kikugie.soundboard.gui.screen.DownloadScreen
-import dev.kikugie.soundboard.gui.screen.SoundBrowser
+import dev.kikugie.soundboard.gui.Screen.DownloadScreen
+import dev.kikugie.soundboard.gui.Screen.SoundBrowser
 import dev.kikugie.soundboard.util.currentScreen
 import dev.kikugie.soundboard.util.idOf
-import io.wispforest.owo.ui.component.ButtonWidgetComponent.Renderer.texture
+import io.wispforest.owo.ui.component.ButtonComponent.Renderer.texture
 import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.core.Sizing.content
 import io.wispforest.owo.ui.core.Sizing.fixed
-import net.minecraft.client.gui.screen.Screen
+import net.minecraft.client.gui.screens.Screen
 import kotlin.reflect.full.createInstance
 
 class SidebarWidget(private val current: Screen) : FlowLayout(fixed(16), content(), Algorithm.VERTICAL) {
@@ -38,3 +38,6 @@ class SidebarWidget(private val current: Screen) : FlowLayout(fixed(16), content
         onPress { RenderSystem.queueFencedTask { currentScreen = T::class.createInstance() } }
     }
 }
+
+
+

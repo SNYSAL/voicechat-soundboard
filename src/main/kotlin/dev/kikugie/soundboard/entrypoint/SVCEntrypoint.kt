@@ -11,7 +11,7 @@ import dev.kikugie.soundboard.MOD_ID
 import dev.kikugie.soundboard.Soundboard
 import dev.kikugie.soundboard.audio.play.AudioScheduler
 import net.fabricmc.api.ClientModInitializer
-import net.minecraft.class_310Client
+import net.minecraft.client.Minecraft
 import javax.sound.sampled.AudioFormat
 import javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED
 
@@ -28,7 +28,7 @@ object SVCEntrypoint : SoundboardEntrypoint, VoicechatPlugin, ClientModInitializ
         event<ClientVoicechatConnectionEvent> {
             api = it.voicechat
             connected = it.isConnected
-            channel = api?.createStaticAudioChannel(MinecraftClient.getInstance().player!!.uuid)
+            channel = api?.createStaticAudioChannel(Minecraft.getInstance().player!!.uuid)
             scheduler.reset()
         }
         event<MergeClientSoundEvent> {
@@ -49,3 +49,6 @@ object SVCEntrypoint : SoundboardEntrypoint, VoicechatPlugin, ClientModInitializ
     override val muted: Boolean
         get() = api?.run { isMuted || isDisabled || isDisconnected } ?: true
 }
+
+
+

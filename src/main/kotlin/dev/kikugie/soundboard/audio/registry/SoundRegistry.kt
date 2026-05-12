@@ -1,4 +1,4 @@
-package dev.kikugie.soundboard.audio.registry
+package dev.kikugie.soundboard.audio.Registry
 
 import dev.kikugie.kowoui.translation
 import dev.kikugie.soundboard.CONFIG
@@ -30,3 +30,6 @@ object SoundRegistry {
         )
     }
 }
+
+
+

@@ -2,7 +2,7 @@ package dev.kikugie.soundboard.gui.component
 
 import dev.kikugie.soundboard.util.drawLinePrecise
 import dev.kikugie.soundboard.util.volumeScale
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.base.BaseComponent
 import io.wispforest.owo.ui.core.OwoUIDrawContext
 //?} else {
@@ -28,7 +28,7 @@ class WaveformComponent(
     private var lines: IntArray = intArrayOf()
 
     init {
-        //? if =1.21.8 {
+        //? if <26.0 {
         sizing(Sizing.fill())
         //?} else {
         sizing(Sizing.fill(), Sizing.fill())
@@ -74,3 +74,6 @@ class WaveformComponent(
         return (halfHeight - lineHeight).toInt()
     }
 }
+
+
+

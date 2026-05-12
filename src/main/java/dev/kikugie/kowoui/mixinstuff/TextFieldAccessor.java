@@ -12,7 +12,10 @@ public interface TextFieldAccessor {
 		return Predicates.alwaysTrue();
 	}
 
-	default @Nullable Color soundboard$color(@NotNull String text) {
+	default @Nullable Color soundboard$color(@NotNull String Component) {
 		return null;
 	}
 }
+
+
+

@@ -2,7 +2,7 @@
 
 package dev.kikugie.soundboard.audio.download
 
-import dev.kikugie.kowoui.text
+import dev.kikugie.kowoui.Component
 import dev.kikugie.kowoui.translation
 import dev.kikugie.soundboard.GAME_DIR
 import dev.kikugie.soundboard.LOGGER
@@ -10,11 +10,11 @@ import dev.kikugie.soundboard.Soundboard
 import kotlinx.coroutines.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import net.minecraft.text.ClickEvent
-import net.minecraft.text.Style
-import net.minecraft.text.Text
-import net.minecraft.text.Texts
-import net.minecraft.util.Formatting
+import net.minecraft.Component.ClickEvent
+import net.minecraft.Component.Style
+import net.minecraft.network.chat.Component
+import net.minecraft.network.chat.Components
+import net.minecraft.ChatFormatting
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -138,17 +138,17 @@ object CobaltAPIV10 : CobaltAPI() {
             "picker" ->  ErrorResponse(COBALT_PICKER.translation())
             "error" -> result.let {
                 val error = result.error ?: return@let ErrorResponse(COBALT_MISSING.translation())
-                val text = parseError(error.code, "url" to result.url, "limit" to error.context?.limit?.toString(), "service" to error.context?.service)
-                ErrorResponse(text)
+                val Component = parseError(error.code, "url" to result.url, "limit" to error.context?.limit?.toString(), "service" to error.context?.service)
+                ErrorResponse(Component)
             }
             else -> ErrorResponse(COBALT_UNKNOWN.translation(result.status))
         }
     }
 
-    private fun parseError(code: String, vararg params: Pair<String, String?>): Text {
+    private fun parseError(code: String, vararg params: Pair<String, String?>): Component {
         var translated = "$COBALT_ROOT.${code.removePrefix("error.")}".translation().string
         for ((k, v) in params) if (v != null) translated = translated.replace("<$k>", v)
-        return translated.text()
+        return translated.Component()
     }
 }
 
@@ -156,13 +156,13 @@ object CobaltAPIV7 : CobaltAPI() {
     @Serializable
     private data class JsonResponse(
         val status: String,
-        val text: String = "",
+        val Component: String = "",
         val url: String = "",
     )
 
     private val HYPERLINK = Regex("<a\\b[^>]*>(.*?)</a>")
     private val HREF = Regex("href\\s*=\\s*\"(.*?)\"")
-    private val TEXT = Regex(">([^<]+)<")
+    private val Component = Regex(">([^<]+)<")
     override val ENDPOINT: String
         get() = "${Soundboard.config.cobaltEndpoint}/api/json"
 
@@ -177,15 +177,15 @@ object CobaltAPIV7 : CobaltAPI() {
         val result = JSON.decodeFromString<JsonResponse>(contents)
         return when(result.status) {
             "stream", "redirect" -> StreamResponse(result.url)
-            "error" -> ErrorResponse(result.text.convert())
+            "error" -> ErrorResponse(result.Component.convert())
             "picker" -> ErrorResponse(COBALT_PICKER.translation())
             else -> ErrorResponse(COBALT_UNKNOWN.translation(result.status))
         }
     }
 
-    private fun String.convert(): Text {
+    private fun String.convert(): Component {
         val components = newlineAtBr().fixCapitalization().parseLinks()
-        return Texts.join(components, Text.empty())
+        return Texts.join(components, Component.empty())
     }
 
     private fun String.newlineAtBr() = replace("<br>", "\n")
@@ -202,17 +202,17 @@ object CobaltAPIV7 : CobaltAPI() {
         }
     }
 
-    private fun String.parseLinks(): List<Text> {
+    private fun String.parseLinks(): List<Component> {
         val matches = HYPERLINK.findAll(this).toList()
-        if (matches.isEmpty()) return listOf(text())
+        if (matches.isEmpty()) return listOf(Component())
 
-        val result = mutableListOf<Text>()
+        val result = mutableListOf<Component>()
         var last = 0
 
         for (match in matches) {
             if (last < match.range.first) {
                 val segment = substring(last, match.range.first)
-                result += segment.text()
+                result += segment.Component()
             }
 
             val segment = match.value
@@ -222,14 +222,17 @@ object CobaltAPIV7 : CobaltAPI() {
         return result
     }
 
-    private fun String.parseLink(): List<Text> {
-        val href = HREF.find(this)?.groupValues?.getOrNull(1) ?: return listOf(Text.empty())
-        val text = TEXT.find(this)?.groupValues?.getOrNull(1) ?: return listOf(Text.empty())
+    private fun String.parseLink(): List<Component> {
+        val href = HREF.find(this)?.groupValues?.getOrNull(1) ?: return listOf(Component.empty())
+        val Component = Component.find(this)?.groupValues?.getOrNull(1) ?: return listOf(Component.empty())
         val style = Style.EMPTY
             .withItalic(true)
             .withUnderline(true)
-            .withColor(Formatting.BLUE)
+            .withColor(ChatFormatting.BLUE)
             .withClickEvent(ClickEvent.OpenUrl(java.net.URI.create(href)))
-        return text.text().getWithStyle(style)
+        return Component.Component().getWithStyle(style)
     }
 }
+
+
+

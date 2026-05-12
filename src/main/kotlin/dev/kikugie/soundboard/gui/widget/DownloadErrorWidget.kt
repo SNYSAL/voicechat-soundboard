@@ -9,11 +9,11 @@ import io.wispforest.owo.ui.container.FlowLayout
 import io.wispforest.owo.ui.core.Insets.of
 import io.wispforest.owo.ui.core.Sizing.*
 import io.wispforest.owo.ui.core.Surface
-import net.minecraft.entity.EntityType
-import net.minecraft.nbt.NbtCompound
-import net.minecraft.text.Text
+import net.minecraft.world.entity.EntityType
+import net.minecraft.nbt.CompoundTag
+import net.minecraft.network.chat.Component
 
-class DownloadErrorWidget(message: Text) : FlowLayout(expand(), content(), Algorithm.HORIZONTAL) {
+class DownloadErrorWidget(message: Component) : FlowLayout(expand(), content(), Algorithm.HORIZONTAL) {
     init {
         surface(Surface.PANEL)
         padding(of(5))
@@ -26,7 +26,7 @@ class DownloadErrorWidget(message: Text) : FlowLayout(expand(), content(), Algor
 
     private fun cat() = entity(
         EntityType.CAT,
-        NbtCompound().apply {
+        CompoundTag().apply {
             putString("variant", "all_black")
             putBoolean("Sitting", true)
         }
@@ -39,3 +39,6 @@ class DownloadErrorWidget(message: Text) : FlowLayout(expand(), content(), Algor
         padding = of(1)
     }
 }
+
+
+

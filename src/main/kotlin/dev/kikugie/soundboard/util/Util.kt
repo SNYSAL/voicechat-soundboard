@@ -2,11 +2,11 @@ package dev.kikugie.soundboard.util
 
 import dev.kikugie.soundboard.MOD_ID
 import kotlinx.coroutines.*
-import net.minecraft.class_310Client
-import net.minecraft.client.gui.screen.Screen
-import net.minecraft.util.Identifier
+import net.minecraft.client.Minecraft
+import net.minecraft.client.gui.screens.Screen
+import net.minecraft.resources.ResourceLocation
 import net.minecraft.util.Util
-import net.minecraft.util.math.Vec3d
+import net.minecraft.world.phys.Vec3
 //? if !=1.21.8 {
 import org.lwjgl.glfw.GLFW
 //?}
@@ -44,9 +44,9 @@ fun Path.navigate() {
     Util.getOperatingSystem().open(this)
 }
 
-val client = MinecraftClient.getInstance()
+val client = Minecraft.getInstance()
 
-//? if =1.21.8 {
+//? if <26.0 {
 val shiftDown: Boolean get() = Screen.hasShiftDown()
 val ctrlDown: Boolean get() = Screen.hasControlDown()
 val altDown: Boolean get() = Screen.hasAltDown()
@@ -62,4 +62,7 @@ var currentScreen
         client.setScreen(value)
     }
 
-operator fun Vec3d.plus(other: Vec3d) = add(other)
+operator fun Vec3.plus(other: Vec3) = add(other)
+
+
+

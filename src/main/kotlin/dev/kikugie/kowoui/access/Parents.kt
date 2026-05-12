@@ -3,7 +3,7 @@
 package dev.kikugie.kowoui.access
 
 import dev.kikugie.kowoui.util.CombinedAlignment
-//? if =1.21.8 {
+//? if <26.0 {
 import io.wispforest.owo.ui.core.*
 //?} else {
 import io.wispforest.owo.ui.core.ParentUIComponent as ParentComponent
@@ -57,3 +57,6 @@ val ParentComponent.animatablePadding: AnimatableProperty<Insets>
     get() = padding()
 val ParentComponent.children: List<Component>
     get() = children()
+
+
+
